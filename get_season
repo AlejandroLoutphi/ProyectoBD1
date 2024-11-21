@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -s $1 | tidy -w 100000000 | grep season-synopsis | sed 's/^.\{54\}//' | sed 's/.\{4\}$//' | sed 's/&nbsp;/ /g' > seasons.txt
