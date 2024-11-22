@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 
-curl -s $1 | tidy -w 100000000 | grep episode-synopsis | sed 's/^.\{56\}//g' | sed 's/.\{4\}$//' | sed 's/&nbsp;/ /g' > episodes.txt
+# $1 = nombre serie
+# $2 = url serie
+
+rgx="s/\(.*\)\. \(.*\)+++\(.*\)/    ((SELECT id_contenido FROM Contenido WHERE nombre='$1'), (SELECT id_temporada FROM Temporada WHERE numero=0), \1, '\2', '\3'),/g"
+
+curl -s $2 | 
+tidy -w 100000000 |
+grep '\(episode-title\|episode-synopsis\)' |
+sed 'N;s/\n/ /' |
+sed 's/^.\{51\}//g' |
+sed 's/<\/h3> <p class="epsiode-synopsis" data-uia="episode-synopsis">/+++/g' |
+sed 's/.\{4\}$//' |
+sed 's/&nbsp;/ /g' |
+sed "$rgx" > episodes.txt

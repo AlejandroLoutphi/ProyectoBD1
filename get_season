@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 
-curl -s $1 | tidy -w 100000000 | grep season-synopsis | sed 's/^.\{54\}//' | sed 's/.\{4\}$//' | sed 's/&nbsp;/ /g' > seasons.txt
+# $1 = nombre serie
+# $2 = url serie
+
+rgx="s/\(.*\)/    ((SELECT id_contenido FROM Contenido WHERE nombre='$1'), 0,'\1'),/g"
+
+curl -s $2 | 
+tidy -w 100000000 |
+grep 'season-synopsis' |
+sed 's/^.\{54\}//g' |
+sed 's/.\{4\}$//' |
+sed 's/&nbsp;/ /g' |
+sed "$rgx" > seasons.txt
+
+echo "$rgx"
