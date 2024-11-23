@@ -232,13 +232,28 @@ INSERT INTO Perfil
 ;
 
 
+-- Suscripcion
 INSERT INTO Suscripcion
     (tipo, nombre, descripcion, tarifa) VALUES
     ('Gold', 'Gold', 'Con anuncios; todos los juegos móviles y la mayoría de las series y películas están disponibles. Los títulos no disponibles exhibirán un ícono de candado. Puedes ver contenido en 2 dispositivos compatibles a la vez. Ve en 1080p (Full HD). Puedes descargar contenido en 2 dispositivos compatibles a la vez.', 7),
     ('Premium', 'Premium', 'Sin anuncios; todos los juegos móviles, series y películas están disponibles. Puedes ver contenido en 2 dispositivos compatibles a la vez. Ve en 1080p (Full HD). Puedes descargar contenido en 2 dispositivos compatibles a la vez.', 15),
     ('VIP', 'VIP', 'Sin anuncios; todos los juegos móviles, series y películas están disponibles. Puedes ver contenido en 4 dispositivos compatibles a la vez. Ve en 4K + HDR. Puedes descargar contenido en 6 dispositivos compatibles a la vez. Audio Espacial de Netflix.', 23)
 ;
+
+
+-- Contrata
+INSERT INTO Contrata
+    (id_usuario, id_suscripcion, fecha_inicio, fecha_fin) VALUES
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'apendre0'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'VIP'), '2024-11-19', '2025-11-19'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'ipashler1'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Gold'), '2024-09-09', '2025-09-09'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'tovendon2'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Premium'), '2024-03-04', '2025-03-04'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'acellier3'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'VIP'), '2024-11-14', '2024-12-14'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'atrett4'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Gold'), '2024-10-30', '2024-11-30'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'dbotler5'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Premium'), '2024-11-08', '2024-11-08'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'acoggen6'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Premium'), '2023-12-20', '2024-12-20')
+;
     
+
 -- Contenido
 INSERT INTO Contenido
     (annio_lanzamiento, nombre, es_contenido_original) VALUES
