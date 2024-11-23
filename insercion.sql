@@ -124,7 +124,7 @@ INSERT INTO Ciudad
     ('Nashville', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
     ('San Cristobal', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
     ('Barquisimeto', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
-    ('Valencia', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
+    ('La Guaira', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
     ('Maracaibo', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
     ('Caracas', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela'))
 ;
@@ -133,36 +133,36 @@ INSERT INTO Ciudad
 -- Usuario, falta id_ciudad
 INSERT INTO Usuario
     (sexo, nombre, email, fecha_nacimiento, nombre_usuario, contrasena, tarjeta, apellido, id_ciudad) VALUES
-    ('M', 'Aristotle', 'apendre0@desdev.cn', '1980-05-08', 'apendre0', '$2a$04$MDSUGHSNaGjRgGKgaNHs2eq3k5/ge.mLwpKul2tlOLzHZIeS4x.WG', 5610034195179049, 'Pendre', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Isadora', 'ipashler1@is.gd', '1973-12-08', 'ipashler1', '$2a$04$JS4Zkz7gqJWl/UgUYTk/GOTCPWijv0yKMejhgicTCGYklLeV8kWY.', 6771566613558594137, 'Pashler', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Tierney', 'tovendon2@furl.net', '1994-09-10', 'tovendon2', '$2a$04$D7WxVJR6b2krANo.wQFIA.h.9VEqN7OpMC/6YyS6pS51TML058MA2', 5010129022211928, 'Ovendon', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Angie', 'acellier3@diigo.com', '1996-12-10', 'acellier3', '$2a$04$79eX70F2dZqtK55RTRAg1.K6XiAK/Z732xKtMExy7O/nAJ2jYmYR.', 6759044056761978456, 'Cellier', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Amitie', 'atrett4@nature.com', '2005-10-26', 'atrett4', '$2a$04$W2N1hIqdhqj.v3DyiezPie4u57CPAlCkd3nD7Wq8hMm7hYjyeMgUK', 633464499769468522, 'Trett', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Deeann', 'dbotler5@pagesperso-orange.fr', '1974-02-02', 'dbotler5', '$2a$04$gfWRT72Ui.JxhNv5NG6wTumdtEPWvEyKGIYjWChKHlXWM00ITaXy2', 201851581475905, 'Botler', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Aluino', 'acoggen6@newyorker.com', '1986-03-13', 'acoggen6', '$2a$04$iEz/AaNRmBcmZnssGdZxquhWLvawHGuL981sGO79Hxb/StMcfOy6u', 5499340638988862, 'Coggen', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Merci', 'mmcgoldrick7@clickbank.net', '1983-03-15', 'mmcgoldrick7', '$2a$04$ZSCOPyP4njY71Ohc18l4Qe38AnppB0sYrdPqetqJDMTdV/IuYGO6C', 4844183108634201, 'McGoldrick', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Car', 'ccoleshill8@pcworld.com', '1992-05-22', 'ccoleshill8', '$2a$04$TacQv6tYM2iUZw4RgixiyOaVamjYpt1FSMMkNtzHf/k.YNeDW/Rri', 3545175070063645, 'Coleshill', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Euphemia', 'esandyford9@wiley.com', '2006-04-21', 'esandyford9', '$2a$04$8Gy0WvHW2YuXqUansJmD.eVhyiPNCuiVAxGaL0hpWoKG1UfcWYWwu', 3537627950364006, 'Sandyford', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Rasia', 'rweaversa@mozilla.org', '1976-05-20', 'rweaversa', '$2a$04$0VBQ6hwP9hNCWevN3WPulOVZzOUzvsKEgd19jsDQ7Fg7w0qFYDf2W', 58933841435699084, 'Weavers', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Cazzie', 'cackerleyb@pen.io', '1996-07-04', 'cackerleyb', '$2a$04$32Xfo1i/V/gks/RrFIeDO.DaTnrPPUSgp6A4hL4EIu0FZOqLpqYii', 4857794782846, 'Ackerley', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Donaugh', 'dminneyc@github.io', '1990-05-19', 'dminneyc', '$2a$04$Y4N8SGV8lBxFjYz.9pHTw.Ee5q6euquESjrpcabXoiA4Qyt0GoYVS', 3533859649294625, 'Minney', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Jaynell', 'jbayfieldd@ning.com', '2003-06-02', 'jbayfieldd', '$2a$04$J65Eq1wpXa6o82r39aAJr.1qirqgtvL22UQaNW.MZmc3Z8CaWN9tS', 374622788212610, 'Bayfield', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('N/A', 'Lorianna', 'lwarnese@alexa.com', '1990-11-06', 'lwarnese', '$2a$04$HstnE5mppkk6SdU8/S7vle//safpEMqlaNQInBmygJ5sJj6O4IOre', 201538976246294, 'Warnes', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Fletcher', 'fbeaushawf@studiopress.com', '1993-03-09', 'fbeaushawf', '$2a$04$4xCVUrzpfBxOnUedgL6OeOefwEQxaCIdWGmkscd0LoBnVJT4pZ/gG', 3555720299240750, 'Beaushaw', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Waring', 'wmeadowcraftg@imdb.com', '1987-01-05', 'wmeadowcraftg', '$2a$04$bsFegA9DYO0ThKVfv3C9AuBl0plsNXsxqYnE6kPxrVgGJJ8EJ7Y/6', 3540631307444359, 'Meadowcraft', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Bunni', 'bcrabbeh@last.fm', '1997-04-10', 'bcrabbeh', '$2a$04$JTYGM45XA531v51ydmP8AO8z88rhO9RgEmIHpKQXYSF2wjrIjJxF2', 5020027073174227, 'Crabbe', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Maddalena', 'mvaughni@wix.com', '2003-02-24', 'mvaughni', '$2a$04$4AkeccIkifwYkTsBC.cWEODjhLN.kUl7xXF9CEVGR19M.3NwBdgGi', 5048373871169680, 'Vaughn', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Willabella', 'wrobakj@parallels.com', '1977-11-29', 'wrobakj', '$2a$04$BVgLrD5W/rwsdCgViYi7PuxA8t1D.aD8kQz6aLp.3OX/FGCAF68D6', 4041377988061011, 'Robak', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Liane', 'lbaldettik@printfriendly.com', '1990-10-09', 'lbaldettik', '$2a$04$T8QBDoT602BcuPLxRZDGUeIzh30f6gjKh5rgtPKCcffHEhpE8Sv0O', 374283544948375, 'Baldetti', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Zorah', 'zmabbotl@wp.com', '1973-09-07', 'zmabbotl', '$2a$04$fJaOziyq.hNlBxRyOgV7ROPcjGOWajZl463zTenJrr2aEBZeDMHwa', 4026587283064788, 'Mabbot', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Emelina', 'elittledykem@sohu.com', '2006-10-27', 'elittledykem', '$2a$04$jpvtF6At.udOLmCM2HZl6enleD4J85S/fB2DlhIBRNWP1w2hbQoWC', 3581685692770356, 'Littledyke', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Adrian', 'akenann@eepurl.com', '1996-10-09', 'akenann', '$2a$04$M7YTjtQVZZ716KEQNVE5N.722hfhduxbpq/.AU77T9cLt0rqKTg32', 3566342456809629, 'Kenan', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Adriana', 'fhowato@quantcast.com', '1971-02-18', 'fhowato', '$2a$04$hiU86PedlQ0C4sKwDVFhvuWxZqkhDshWF1e5YikMtJUMm/95vEp.e', 3547025375251304, 'Howat', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Florentia', 'ftembeyp@nature.com', '1984-10-19', 'ftembeyp', '$2a$04$T/Be0egoY1SoCZ50k4ZrGO13l43eDpBZBYMgQbbKebmTMyka4e9yC', 3574561614698695, 'Tembey', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Wilbur', 'wnultyq@blogtalkradio.com', '1973-07-22', 'wnultyq', '$2a$04$cY4WVVri7XWjoG7OAi5OG.K0wLD9nWDxbX7mOTVJO.njxBcD8smEq', 3551683367325727, 'Nulty', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('M', 'Archibold', 'ahenstoner@jalbum.net', '2000-04-04', 'ahenstoner', '$2a$04$a0pSgviSmGgkpyMdQDlEqetvZuaNBjX5Xo9cCs6lpzrmRNHd8rX8.', 5100177919155931, 'Henstone', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('F', 'Catina', 'cwallbrooks@cmu.edu', '1995-12-11', 'cwallbrooks', '$2a$04$ADPrlbGM4zmyrbMuenngie2PxTqfFl.doQQka2vASENwirtguZIpS', 3540731586675812, 'Wallbrook', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE '')),
-    ('N/A', 'Zacharia', 'znealont@baidu.com', '1987-08-30', 'znealont', '$2a$04$OdVJe91aK2t7cBx/u/OOheZ1YsR7sghJPnuvFQ8NmOrT.Jiy2Hyp6', 67612151184204675, 'Nealon', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE ''))
+    ('M', 'Aristotle', 'apendre0@desdev.cn', '1980-05-08', 'apendre0', '$2a$04$MDSUGHSNaGjRgGKgaNHs2eq3k5/ge.mLwpKul2tlOLzHZIeS4x.WG', 5610034195179049, 'Pendre', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Palmira')),
+    ('F', 'Isadora', 'ipashler1@is.gd', '1973-12-08', 'ipashler1', '$2a$04$JS4Zkz7gqJWl/UgUYTk/GOTCPWijv0yKMejhgicTCGYklLeV8kWY.', 6771566613558594137, 'Pashler', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Santa Fe')),
+    ('F', 'Tierney', 'tovendon2@furl.net', '1994-09-10', 'tovendon2', '$2a$04$D7WxVJR6b2krANo.wQFIA.h.9VEqN7OpMC/6YyS6pS51TML058MA2', 5010129022211928, 'Ovendon', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Suwon')),
+    ('F', 'Angie', 'acellier3@diigo.com', '1996-12-10', 'acellier3', '$2a$04$79eX70F2dZqtK55RTRAg1.K6XiAK/Z732xKtMExy7O/nAJ2jYmYR.', 6759044056761978456, 'Cellier', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Changwon')),
+    ('F', 'Amitie', 'atrett4@nature.com', '2005-10-26', 'atrett4', '$2a$04$W2N1hIqdhqj.v3DyiezPie4u57CPAlCkd3nD7Wq8hMm7hYjyeMgUK', 633464499769468522, 'Trett', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Huancayo')),
+    ('F', 'Deeann', 'dbotler5@pagesperso-orange.fr', '1974-02-02', 'dbotler5', '$2a$04$gfWRT72Ui.JxhNv5NG6wTumdtEPWvEyKGIYjWChKHlXWM00ITaXy2', 201851581475905, 'Botler', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Sao Luis')),
+    ('M', 'Aluino', 'acoggen6@newyorker.com', '1986-03-13', 'acoggen6', '$2a$04$iEz/AaNRmBcmZnssGdZxquhWLvawHGuL981sGO79Hxb/StMcfOy6u', 5499340638988862, 'Coggen', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Corrientes')),
+    ('F', 'Merci', 'mmcgoldrick7@clickbank.net', '1983-03-15', 'mmcgoldrick7', '$2a$04$ZSCOPyP4njY71Ohc18l4Qe38AnppB0sYrdPqetqJDMTdV/IuYGO6C', 4844183108634201, 'McGoldrick', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Suwon')),
+    ('M', 'Car', 'ccoleshill8@pcworld.com', '1992-05-22', 'ccoleshill8', '$2a$04$TacQv6tYM2iUZw4RgixiyOaVamjYpt1FSMMkNtzHf/k.YNeDW/Rri', 3545175070063645, 'Coleshill', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Concepcion')),
+    ('F', 'Euphemia', 'esandyford9@wiley.com', '2006-04-21', 'esandyford9', '$2a$04$8Gy0WvHW2YuXqUansJmD.eVhyiPNCuiVAxGaL0hpWoKG1UfcWYWwu', 3537627950364006, 'Sandyford', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'La Florida')),
+    ('F', 'Rasia', 'rweaversa@mozilla.org', '1976-05-20', 'rweaversa', '$2a$04$0VBQ6hwP9hNCWevN3WPulOVZzOUzvsKEgd19jsDQ7Fg7w0qFYDf2W', 58933841435699084, 'Weavers', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Rome')),
+    ('M', 'Cazzie', 'cackerleyb@pen.io', '1996-07-04', 'cackerleyb', '$2a$04$32Xfo1i/V/gks/RrFIeDO.DaTnrPPUSgp6A4hL4EIu0FZOqLpqYii', 4857794782846, 'Ackerley', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Raleigh')),
+    ('M', 'Donaugh', 'dminneyc@github.io', '1990-05-19', 'dminneyc', '$2a$04$Y4N8SGV8lBxFjYz.9pHTw.Ee5q6euquESjrpcabXoiA4Qyt0GoYVS', 3533859649294625, 'Minney', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Genoa')),
+    ('F', 'Jaynell', 'jbayfieldd@ning.com', '2003-06-02', 'jbayfieldd', '$2a$04$J65Eq1wpXa6o82r39aAJr.1qirqgtvL22UQaNW.MZmc3Z8CaWN9tS', 374622788212610, 'Bayfield', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Bordeaux')),
+    ('N/A', 'Lorianna', 'lwarnese@alexa.com', '1990-11-06', 'lwarnese', '$2a$04$HstnE5mppkk6SdU8/S7vle//safpEMqlaNQInBmygJ5sJj6O4IOre', 201538976246294, 'Warnes', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Goyang')),
+    ('M', 'Fletcher', 'fbeaushawf@studiopress.com', '1993-03-09', 'fbeaushawf', '$2a$04$4xCVUrzpfBxOnUedgL6OeOefwEQxaCIdWGmkscd0LoBnVJT4pZ/gG', 3555720299240750, 'Beaushaw', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Santa Fe')),
+    ('M', 'Waring', 'wmeadowcraftg@imdb.com', '1987-01-05', 'wmeadowcraftg', '$2a$04$bsFegA9DYO0ThKVfv3C9AuBl0plsNXsxqYnE6kPxrVgGJJ8EJ7Y/6', 3540631307444359, 'Meadowcraft', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Nezahualcoyotl')),
+    ('F', 'Bunni', 'bcrabbeh@last.fm', '1997-04-10', 'bcrabbeh', '$2a$04$JTYGM45XA531v51ydmP8AO8z88rhO9RgEmIHpKQXYSF2wjrIjJxF2', 5020027073174227, 'Crabbe', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Lodz')),
+    ('F', 'Maddalena', 'mvaughni@wix.com', '2003-02-24', 'mvaughni', '$2a$04$4AkeccIkifwYkTsBC.cWEODjhLN.kUl7xXF9CEVGR19M.3NwBdgGi', 5048373871169680, 'Vaughn', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Sumedang')),
+    ('F', 'Willabella', 'wrobakj@parallels.com', '1977-11-29', 'wrobakj', '$2a$04$BVgLrD5W/rwsdCgViYi7PuxA8t1D.aD8kQz6aLp.3OX/FGCAF68D6', 4041377988061011, 'Robak', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Valencia')),
+    ('F', 'Liane', 'lbaldettik@printfriendly.com', '1990-10-09', 'lbaldettik', '$2a$04$T8QBDoT602BcuPLxRZDGUeIzh30f6gjKh5rgtPKCcffHEhpE8Sv0O', 374283544948375, 'Baldetti', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Juarez')),
+    ('F', 'Zorah', 'zmabbotl@wp.com', '1973-09-07', 'zmabbotl', '$2a$04$fJaOziyq.hNlBxRyOgV7ROPcjGOWajZl463zTenJrr2aEBZeDMHwa', 4026587283064788, 'Mabbot', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Milan')),
+    ('F', 'Emelina', 'elittledykem@sohu.com', '2006-10-27', 'elittledykem', '$2a$04$jpvtF6At.udOLmCM2HZl6enleD4J85S/fB2DlhIBRNWP1w2hbQoWC', 3581685692770356, 'Littledyke', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Bareilly')),
+    ('M', 'Adrian', 'akenann@eepurl.com', '1996-10-09', 'akenann', '$2a$04$M7YTjtQVZZ716KEQNVE5N.722hfhduxbpq/.AU77T9cLt0rqKTg32', 3566342456809629, 'Kenan', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Cranbourne')),
+    ('F', 'Adriana', 'fhowato@quantcast.com', '1971-02-18', 'fhowato', '$2a$04$hiU86PedlQ0C4sKwDVFhvuWxZqkhDshWF1e5YikMtJUMm/95vEp.e', 3547025375251304, 'Howat', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Cali')),
+    ('F', 'Florentia', 'ftembeyp@nature.com', '1984-10-19', 'ftembeyp', '$2a$04$T/Be0egoY1SoCZ50k4ZrGO13l43eDpBZBYMgQbbKebmTMyka4e9yC', 3574561614698695, 'Tembey', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Barranquilla  ')),
+    ('M', 'Wilbur', 'wnultyq@blogtalkradio.com', '1973-07-22', 'wnultyq', '$2a$04$cY4WVVri7XWjoG7OAi5OG.K0wLD9nWDxbX7mOTVJO.njxBcD8smEq', 3551683367325727, 'Nulty', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Salt Lake City')),
+    ('M', 'Archibold', 'ahenstoner@jalbum.net', '2000-04-04', 'ahenstoner', '$2a$04$a0pSgviSmGgkpyMdQDlEqetvZuaNBjX5Xo9cCs6lpzrmRNHd8rX8.', 5100177919155931, 'Henstone', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Kayseri')),
+    ('F', 'Catina', 'cwallbrooks@cmu.edu', '1995-12-11', 'cwallbrooks', '$2a$04$ADPrlbGM4zmyrbMuenngie2PxTqfFl.doQQka2vASENwirtguZIpS', 3540731586675812, 'Wallbrook', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Sao Luis')),
+    ('N/A', 'Zacharia', 'znealont@baidu.com', '1987-08-30', 'znealont', '$2a$04$OdVJe91aK2t7cBx/u/OOheZ1YsR7sghJPnuvFQ8NmOrT.Jiy2Hyp6', 67612151184204675, 'Nealon', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Goyang'))
 ;
 
 
@@ -407,5 +407,5 @@ INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
 SELECT C.id_contenido, P.id_usuario, P.id_perfil, S
 FROM Contenido C, Perfil P, generate_series(1, 5) S
 ORDER BY RANDOM()
-LIMIT 200
+LIMIT 2000
 ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
