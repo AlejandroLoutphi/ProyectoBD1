@@ -54,6 +54,23 @@ CREATE TABLE Perfil(
     PRIMARY KEY (id_usuario, id_perfil)
 );
 
+CREATE OR REPLACE FUNCTION inc_perfil_id_fn()
+RETURNS TRIGGER
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    IF ((SELECT count(*) FROM Perfil P WHERE P.id_usuario = NEW.id_usuario) >= 5) THEN
+        RAISE EXCEPTION 'Solo pueden haber hasta 5 perfiles por usuario';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER inc_perfil_id
+AFTER INSERT ON Perfil
+FOR EACH ROW
+EXECUTE PROCEDURE inc_perfil_id_fn();
+
 CREATE TABLE Genero(
     id_genero SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
