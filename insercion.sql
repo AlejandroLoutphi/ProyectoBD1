@@ -1,17 +1,149 @@
+-- Paises, no se que hacer para las descripciones
+
+INSERT INTO Pais
+    (nombre) VALUES
+    ('Alemania'),
+    ('Argentina'),
+    ('Australia'),
+    ('Brazil'),
+    ('Canada'),
+    ('Chile'),
+    ('Colombia'),
+    ('Francia'),
+    ('India'),
+    ('Indonesia'),
+    ('Italia'),
+    ('Japon'),
+    ('Corea del Sur'),
+    ('Mexico'),
+    ('Peru'),
+    ('Polonia'),
+    ('Espana'),
+    ('Turquia'),
+    ('Estados Unidos'),
+    ('Venezuela')
+;
+
+INSERT INTO Ciudad
+    (nombre, id_pais) VALUES
+    ('Cologne', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
+    ('Hamburg', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
+    ('Munich', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
+    ('Stuttgart', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
+    ('Wuppertal', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
+    ('Rosario', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Argentina')),
+    ('Buenos Aires', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Argentina')),
+    ('Cordoba', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Argentina')),
+    ('Corrientes', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Argentina')),
+    ('Santa Fe', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Argentina')),
+    ('Adelaide', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Australia')),
+    ('Perth', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Australia')),
+    ('Brisbane', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Australia')),
+    ('Canberra', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Australia')),
+    ('Cranbourne', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Australia')),
+    ('Sao Luis', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Brazil')),
+    ('Campinas', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Brazil')),
+    ('Rio de Janeiro', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Brazil')),
+    ('Belem', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Brazil')),
+    ('Guarulhos', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Brazil')),
+    ('Ottawa', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Canada')),
+    ('Edmonton', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Canada')),
+    ('Calgary', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Canada')),
+    ('Vancouver', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Canada')),
+    ('Victoria', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Canada')),
+    ('La Florida', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Chile')),
+    ('Maipu', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Chile')),
+    ('Puente Alto', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Chile')),
+    ('Santiago', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Chile')),
+    ('Concepcion', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Chile')),
+    ('Barranquilla', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Colombia')),
+    ('Cali', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Colombia')),
+    ('Medellin', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Colombia')),
+    ('Palmira', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Colombia')),
+    ('Neiva', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Colombia')),
+    ('Paris', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Francia')),
+    ('Toulouse', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Francia')),
+    ('Lyon', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Francia')),
+    ('Marseille', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Francia')),
+    ('Bordeaux', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Francia')),
+    ('Bareilly', (SELECT id_pais FROM Pais WHERE nombre LIKE 'India')),
+    ('Kota', (SELECT id_pais FROM Pais WHERE nombre LIKE 'India')),
+    ('Raipur', (SELECT id_pais FROM Pais WHERE nombre LIKE 'India')),
+    ('Jodhpur', (SELECT id_pais FROM Pais WHERE nombre LIKE 'India')),
+    ('Vijayawada', (SELECT id_pais FROM Pais WHERE nombre LIKE 'India')),
+    ('Bogor', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Indonesia')),
+    ('Bandar Lampung', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Indonesia')),
+    ('Cilacap', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Indonesia')),
+    ('Batam Centre', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Indonesia')),
+    ('Sumedang', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Indonesia')),
+    ('Milan', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Italia')),
+    ('Rome', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Italia')),
+    ('Florence', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Italia')),
+    ('Bologna', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Italia')),
+    ('Genoa', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Italia')),
+    ('Sendai', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Japon')),
+    ('Hiroshima', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Japon')),
+    ('Saitama', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Japon')),
+    ('Kyoto', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Japon')),
+    ('Osaka', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Japon')),
+    ('Changwon', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Corea del Sur')),
+    ('Goyang', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Corea del Sur')),
+    ('Tongjin', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Corea del Sur')),
+    ('Ulsan', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Corea del Sur')),
+    ('Suwon', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Corea del Sur')),
+    ('Morelia', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Mexico')),
+    ('Ciudad Nezahualcoyotl', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Mexico')),
+    ('Nezahualcoyotl', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Mexico')),
+    ('Mexicali', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Mexico')),
+    ('Juarez', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Mexico')),
+    ('Arequipa', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Peru')),
+    ('Lima', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Peru')),
+    ('Iquitos', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Peru')),
+    ('Huancayo', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Peru')),
+    ('Callao', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Peru')),
+    ('Warsaw', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Polonia')),
+    ('Szczecin', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Polonia')),
+    ('Gdansk', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Polonia')),
+    ('Poznan', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Polonia')),
+    ('Lodz', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Polonia')),
+    ('Sevilla', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Espana')),
+    ('Valencia', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Espana')),
+    ('Barcelona', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Espana')),
+    ('Santa Cruz', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Espana')),
+    ('Palma', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Espana')),
+    ('Denizli', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Turquia')),
+    ('Balikesir', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Turquia')),
+    ('Samsun', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Turquia')),
+    ('Kayseri', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Turquia')),
+    ('Istanbul', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Turquia')),
+    ('Memphis', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
+    ('Richmond', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
+    ('Raleigh', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
+    ('Salt Lake City', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
+    ('Nashville', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Estados Unidos')),
+    ('San Cristobal', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
+    ('Barquisimeto', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
+    ('Valencia', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
+    ('Maracaibo', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela')),
+    ('Caracas', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Venezuela'))
+;
+
+    
 -- Contenido
 INSERT INTO Contenido
     (annio_lanzamiento, nombre, es_contenido_original) VALUES
-    (2024, 'Cobra Kai', TRUE);
+    (2024, 'Cobra Kai', TRUE)
+;
 
 
 -- Serie
 INSERT INTO Serie
-    (id_contenido, num_episodios, descripcion) VALUES (
-    (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 60, 'Enemigos acérrimos. Dojos rivales. Sangre nueva. Daniel y Johnny reviven viejas rivalidades en esta secuela de las películas de «Karate Kid».'
-);
+    (id_contenido, num_episodios, descripcion) VALUES
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 60, 'Enemigos acérrimos. Dojos rivales. Sangre nueva. Daniel y Johnny reviven viejas rivalidades en esta secuela de las películas de «Karate Kid».')
+;
 
 
--- Temporada
+-- Temporada, usar get_season
 INSERT INTO Temporada
     (id_contenido, numero, descripcion) VALUES
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 1,'Décadas después del torneo que les cambió la vida, se reaviva la rivalidad entre Johnny y Daniel. Esta secuela continúa la historia de las películas de Karate Kid.'),
@@ -22,8 +154,7 @@ INSERT INTO Temporada
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 6,'El mundial de karate se acerca, y Daniel y Johnny trabajan para rearmar el equipo. Pero viejos enemigos y nuevos peligros minan el camino a la gloria.')
 ;
 
-
--- Episodio
+-- Episodio, usar get_episode
 INSERT INTO Episodio
     (id_contenido, id_temporada, numero, nombre, descripcion) VALUES
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT id_temporada FROM Temporada WHERE numero=1), 1, 'As degenerado', 'Alcohólico y harto de vivir a la sombra de Daniel, su antiguo rival, Johnny toca fondo y decide reabrir el dojo de karate Cobra Kai.'),
