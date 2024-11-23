@@ -51,8 +51,7 @@ CREATE TABLE Perfil(
     nombre VARCHAR(128) NOT NULL,
     email VARCHAR(128),
     preferencias_idioma VARCHAR(128),
-    PRIMARY KEY (id_usuario, id_perfil),
-    CHECK ((SELECT count(*) <= 5 FROM Perfil GROUP BY id_usuario)))
+    PRIMARY KEY (id_usuario, id_perfil)
 );
 
 CREATE TABLE Genero(
