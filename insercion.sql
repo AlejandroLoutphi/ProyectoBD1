@@ -154,7 +154,6 @@ INSERT INTO Temporada
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 6,'El mundial de karate se acerca, y Daniel y Johnny trabajan para rearmar el equipo. Pero viejos enemigos y nuevos peligros minan el camino a la gloria.')
 ;
 
-
 -- Episodio, usar get_episode
 INSERT INTO Episodio
     (id_contenido, id_temporada, numero, nombre, descripcion) VALUES
