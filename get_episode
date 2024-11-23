@@ -3,7 +3,7 @@
 # $1 = nombre serie
 # $2 = url serie
 
-rgx="s/\(.*\)\. \(.*\)+++\(.*\)/    ((SELECT id_contenido FROM Contenido WHERE nombre='$1'), (SELECT id_temporada FROM Temporada WHERE numero=0), \1, '\2', '\3'),/g"
+rgx="s/\(.*\)\. \(.*\)+++\(.*\)/    ((SELECT id_contenido FROM Contenido WHERE nombre='$1'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='$1' AND T.numero=0), \1, '\2', '\3'),/g"
 
 curl -s $2 | 
 tidy -w 100000000 |

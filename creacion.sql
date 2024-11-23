@@ -33,7 +33,7 @@ CREATE TABLE Usuario(
     fecha_nacimiento DATE,
     nombre_usuario VARCHAR(128) NOT NULL,
     contrasena VARCHAR(128) NOT NULL,
-    tarjeta INT,
+    tarjeta INT8,
     apellido VARCHAR(128),
     id_ciudad INT REFERENCES
         Ciudad(id_ciudad)
