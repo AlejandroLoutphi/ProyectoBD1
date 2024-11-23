@@ -228,7 +228,7 @@ INSERT INTO Perfil
     ((SELECT id_usuario FROM Usuario WHERE nombre='Zorah'), 'Misha', 'mribeiro1k@mit.edu', 'Lao'),
     ((SELECT id_usuario FROM Usuario WHERE nombre='Zorah'), 'Woodrow', 'wsmy1l@networkadvertising.org', 'Korean'),
     ((SELECT id_usuario FROM Usuario WHERE nombre='Emelina'), 'Rae', 'rvern1m@gmpg.org', 'Indonesian'),
-    ((SELECT id_usuario FROM Usuario WHERE nombre='Emelina'), 'Evanne', 'epaylie1n@friendfeed.com', 'Somali'),
+    ((SELECT id_usuario FROM Usuario WHERE nombre='Emelina'), 'Evanne', 'epaylie1n@friendfeed.com', 'Somali')
 ;
 
     
