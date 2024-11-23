@@ -1,5 +1,4 @@
 -- Paises, no se que hacer para las descripciones
-
 INSERT INTO Pais
     (nombre) VALUES
     ('Alemania'),
@@ -24,6 +23,8 @@ INSERT INTO Pais
     ('Venezuela')
 ;
 
+
+-- Paises, no se que hacer para las descripciones
 INSERT INTO Ciudad
     (nombre, id_pais) VALUES
     ('Cologne', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
@@ -132,13 +133,15 @@ INSERT INTO Ciudad
 -- Contenido
 INSERT INTO Contenido
     (annio_lanzamiento, nombre, es_contenido_original) VALUES
-    (2024, 'Cobra Kai', TRUE)
+    (2008, 'Breaking Bad', FALSE),
+    (2018, 'Cobra Kai', TRUE)
 ;
 
 
 -- Serie
 INSERT INTO Serie
     (id_contenido, num_episodios, descripcion) VALUES
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 62, 'Un profesor de Química de secundaria con cáncer terminal se asocia a un exestudiante para asegurar el futuro de su familia al fabricar y vender metanfetamina.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 60, 'Enemigos acérrimos. Dojos rivales. Sangre nueva. Daniel y Johnny reviven viejas rivalidades en esta secuela de las películas de «Karate Kid».')
 ;
 
@@ -146,6 +149,12 @@ INSERT INTO Serie
 -- Temporada, usar get_season
 INSERT INTO Temporada
     (id_contenido, numero, descripcion) VALUES
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 1,'A medida que Walter construye su imperio, su esposa empieza a sospechar de su errática conducta, y la DEA inicia la búsqueda de un nuevo líder de la droga.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 2,'Walter y Jesse, llegan alto en el juego de las drogas, llamando la atención del cartel rival y poniendo en peligro a Hank; cuñado de Walter y agente de la DEA.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 3,'Pensando en su familia, Walter sigue cocinando metanfetamina en secreto. Mientras, Jesse, ex alumno de Walter, se ha hecho adicto a la heroína.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 4,'Bryan Cranston regresa en una nueva temporada como Walter White, quien sigue elaborando metanfetaminas e intentando superar al narcotraficante Gus Fring.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 5,'En la temporada final, Walt ya no tiene que esforzarse por ser malo. Su vida sigue en una espiral descendente que le lleva a lo más alto de un imperio de la droga.'),
+
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 1,'Décadas después del torneo que les cambió la vida, se reaviva la rivalidad entre Johnny y Daniel. Esta secuela continúa la historia de las películas de Karate Kid.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 2,'Johnny intenta construir una nueva vida, pero alguien del pasado podría alterar su futuro. Daniel abre su Miyagi-do para competir contra Cobra Kai.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 3,'Con un nuevo sensei al mando del dojo de la serpiente, las batallas se libran en tres frentes. Al igual que Cobra Kai, las viejas rencillas nunca mueren...'),
@@ -157,6 +166,69 @@ INSERT INTO Temporada
 -- Episodio, usar get_episode
 INSERT INTO Episodio
     (id_contenido, id_temporada, numero, nombre, descripcion) VALUES
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 1, 'Principio del fin', 'Un profesor de química de escuela secundaria recurre a la venta de drogas para mantener a su familia.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 2, 'El gato en la bolsa', 'Luego del fracaso de su primer negocio de drogas, Walt y Jesse deben deshacerse de dos cadáveres. Skyler sospecha que su marido no está involucrado en nada bueno.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 3, 'Y la bolsa en el río', 'Mientras Walt limpia el desorden que quedó tras su primer negocio de drogas, piensa en decirle a Skyler la verdad sobre su enfermedad.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 4, 'Cáncer', 'Al ser forzado a contar la verdad acerca de su enfermedad, Walt enfrenta el problema de cómo pagar una serie de caros tratamientos contra el cáncer.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 5, 'Materia gris', 'Skyler organiza una intervención para convencer a Walt de que acepte la generosa oferta de su excompañero de investigaciones de pagar el tratamiento contra el cáncer.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 6, 'Un loco puñado de nada', 'Los efectos secundarios y el costo del tratamiento crecen, y Walt exige que Jesse encuentre un revendedor para sus drogas; Jesse termina en problemas con un exconvicto.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 7, 'Acuerdo no violento', 'Tras el encuentro cercano de Jesse con la muerte, Walt acepta producir más drogas para Tuco, mientras Skyler sospecha que su hermana robó un costoso regalo para bebés.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 1, 'Siete con treinta y siete', 'Cuando preparan los planes para su gran negocio final de drogas, a Walt y Jesse les preocupa que a Tuco se le ocurra matarlos cuando quiera.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 2, 'A las brasas', 'Mientras la DEA pone en marcha la búsqueda de Tuco, Skyler recurre a Hank para que la ayude a encontrar a Walt.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 3, 'Picadura de una abeja muerta', 'Walt intenta volver a acercarse a Skyler, y Jesse se encuentra sin hogar después de que sus padres lo echan de su casa.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 4, 'Abajo', 'Walt lucha por intentar salvar su relación con Skyler, y Jesse se queda sin hogar cuando sus padres lo desalojan.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 5, 'Rotura', 'Hank trata de recobrar la compostura tras su encuentro con Tuco. Mientras, Jesse forma una pandilla para distribuir más producto por la ciudad.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 6, 'Cucú', 'Jesse busca a los adictos que robaron las drogas a Skinny Pete, y Walt lucha por sostener su coartada para explicar cómo ha pagado el tratamiento de cáncer.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 7, 'Negro y azul', 'La reputación de narco implacable de Jesse lleva a Walt a ampliar sus actividades; la incursión de Hank en el mundo de la oficina de la DEA en El Paso lo estremece.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 8, '¡Llama a Saul!', 'El arresto de Badger obliga a Walt y Jesse a contratar a un abogado de mala reputación.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 9, 'Cuatro días afuera', 'Preocupado porque no le queda mucha vida, Walt intenta cubrir las necesidades de su familia en una maratónica sesión de preparación de metanfetamina con Jesse.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 10, 'Terminado', 'Al recibir buenas noticias sobre el tratamiento de cáncer, Walt acude a su cuñado, Hank, antes de centrar su atención en hacer las cosas bien en su hogar.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 11, 'Mandala', 'Skyler tiene conflictos por sus sentimientos hacia su jefe. La muerte de un vendedor callejero fuerza a Walt a buscar otro lugar para vender la metanfetamina.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 12, 'Phoenix', 'Walt intenta encaminar su vida y la de Jesse mientras se prepara para la cirugía y pretende esconder la procedencia de su dinero a Skyler y Walt Jr.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=1), 13, 'ABQ', 'Walt intenta encaminar su vida y la de Jesse mientras se prepara para la cirugía y pretende esconder la procedencia de su dinero a Skyler y Walt Jr.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 1, 'No más', 'Tras el desastre aéreo de Albuquerque, Skyler obliga a Walt a mudarse, mientras la estadía de Jesse en rehabilitación lo ayuda a aceptar su rol en el fatal choque aéreo.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 2, 'Caballo sin nombre', 'Skyler está decidida a divorciarse, y Walt acaba en la mira de dos asesinos de un cártel mexicano que buscan venganza.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 3. T. S, 'T.', 'Jesse se cuestiona volver al negocio de las drogas ya que una organización de narcotraficantes espera con ansias vengar la muerte de uno de sus miembros.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 4, 'Luz verde', 'Mientras el romance de Skyler con su jefe crea caos en su matrimonio, un lote de metanfetamina que devuelve a Jesse al negocio involucra inadvertidamente a Walt.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 5, 'Más', 'Walt considera una oferta para regresar al narcotráfico; la obsesión de Hank por atrapar a "Heisenberg" trae problemas para Jesse.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 6, 'Atardecer', 'Walt vuelve al narcotráfico en el laboratorio de Gus, pero el descubrimiento de su vieja casa rodante lo fuerza a él y a Jesse a actuar para que Hank no los descubra.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 7, 'Un minuto', 'Hank, enojado, arriesga su carrera al atacar a Jesse; Walt, preocupado de que Jesse hable, le da un lugar en su laboratorio.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 8, 'Te veo', 'Mientras Hank se aferra a la vida, Walt descubre que los matones pueden estar tras él y busca alejarse de los problemas tomando a Jesse como compañero.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 9, 'Kafkiano', 'Al retomar la producción junto a Walt, Jesse piensa cómo aumentar las ganancias; la recuperación de Hank pone a Marie en una situación difícil con la compañía de seguros.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 10, 'Vuelo', 'Walt y Jesse se enfrentan a una larga noche en el laboratorio... y a una fastidiosa mosca.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 11, 'Abiquiú', 'Hank no está contento con su recuperación; Skyler cuestiona el negocio de lavado de dinero de Saul, y Jesse se enamora de una compañera de rehabilitación.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 12, 'Medias medidas', 'Jesse va tras los narcos que mataron a Combo, Hank se niega a dejar el hospital y Skyler presiona a Walt para que acepte el negocio de lavado de dinero.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=2), 13, 'Medidas totales', 'Luego de liquidar a dos traficantes de su jefe, Walt se da cuenta de que Gus planea matarlo y reemplazarlo con su anterior asistente.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 1, 'Navaja', 'Después de luchar por sus vidas en una turbulenta situación, Walt y Jesse esperan con ansiedad la próxima jugada de Gus.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 2, 'Revólver calibre 38', 'Mientras Walt prepara su defensa contra Gus, Jesse hace frente a la presión renovando su amistad con Badger y Skinny Pete.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 3, 'Casa abierta', 'Mientras Walt se preocupa acerca de la intromisión de Gus y la salud mental de Jesse, cada vez más frágil, Skyler aumenta la presión para obtener lo que quiere.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 4, 'Puntos clave', 'Mientras Skyler arma una historia elaborada para explicar las finanzas de los White, Walt, preocupado, descubre que Hank ha comenzado una nueva investigación.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 5, 'Copiloto', 'Jesse acompaña como copiloto a Mike en una riesgosa serie de picadas, lo que hace que Walt se preocupe por la posible muerte de su socio.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 6, 'Arrinconados', 'Skyler adopta un enfoque reservado cuando sospecha que Walt no le está diciendo la verdad. Mientras tanto, Jesse prueba su valía ante Mike y Gus.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 7, 'Perro problemático', 'Obligado a devolver el auto que compró para su hijo, Walt responde poniendo en aprietos a Skyler con su nueva operación de lavado de dinero.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 8, 'Hermanos', 'Cuando Hank presenta evidencia de que Gus es el narcotraficante de metanfetamina de Albuquerque, a Walt le preocupa que los maten a él y a Jesse por proteger a su jefe.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 9, 'Micrófono', 'Mientras Walt intenta subvertir la investigación de Hank sobre la escena de Albuquerque, una advertencia mortal fuerza a Gus a considerar un trato con el cártel mexicano.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 10, 'Salud', 'Mientras Walt, maltratado, aún se recupera de la pelea, Gus se lleva a Jesse con él a México para cerrar un trato con el cártel.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 11, 'Entrepiso', 'Mientras Skyler presiona a Ted para que acepte su dinero y pueda pagar los impuestos, Gus sostiene que Jesse debería reanudar su trabajo en el laboratorio él solo.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 12, 'Fin de los tiempos', 'Mientras le ordena a su familia que aproveche la protección que la DEA le ofrece a Hank, Walt espera el destino que le toque.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=3), 13, 'Cara a cara', 'Cuando su plan de matar a Gus fracasa, Walt y Jesse deben actuar rápido para cubrir sus rastros y evitar la muerte.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 1, 'Vive libre o muere', 'Walt visita a su familia, que aún está en custodia, mientras debe lidiar con las secuelas de la explosión en Casa Tranquila.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 2, 'Madrigal', 'Walt y Jesse deciden buscar un nuevo compañero para que los ayude en su último proyecto, y la DEA investiga varias pistas con la esperanza de encontrar algo certero.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 3, 'Peligro', 'Para consternación de Skyler, Walter vuelve a vivir a la casa. Walter, Mike y Jesse se reúnen con Saul para pedirle que les encuentre un nuevo lugar para cocinar.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 4, '51 (Cincuenta y uno)', 'Lydia se ve forzada a entregar a su propio empleado a la DEA, y Mike le ofrece un reemplazante: Jesse. Walt y Skyler discuten sobre si la familia corre peligro.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 5, 'Carga de muerte', 'Mike y Lydia trabajan para transportar la metilamina necesaria para la operación. Walt y Jesse intentan elaborar un plan que no arruine su tapadera.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 6, 'Adquisición', 'Walt, Mike y Jesse lidian con las repercusiones del robo de la metilamina. Mike y Jesse quieren salirse del negocio, pero Walt está decidido a construir su imperio.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 7, 'Di mi nombre', 'Walter intenta iniciar un trato con Declan, y Hank —quien tuvo que dejar ir a Mike— ahora tiene en la mira al abogado que ha estado pagando a los hombres de Mike.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 8, 'Planeando sobre todos', 'Walt se encuentra con Lydia para conseguir los nombres de la gente de Mike que está en la cárcel. Skyler hace otro intento por convencer a Walt de que deje de cocinar.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 9, 'Dinero sangriento', 'A medida que Walt y Jesse se adaptan a la vida fuera del negocio, Hank se aferra a una inquietante pista.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 10, 'Enterrado', 'Mientras el pasado atormenta a Skyler, Walt cubre sus huellas, y Jesse continúa luchando con la culpa.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 11, 'Confesiones', 'Jesse decide hacer un cambio, y Walt y Skyler intentan lidiar con una exigencia inesperada.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 12, 'Perro rabioso', 'Una extraña estrategia comienza a dar frutos, mientras se ponen en marcha planes que podrían darle un giro completo a la situación.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 13, 'Tohajiilee', 'La presión aumenta para Walt, de un modo que nunca habría esperado.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 14, 'Ozymandias', 'Todos deben enfrentar circunstancias radicalmente distintas. Todos, sin excepción.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 15, 'Pizarra de granito', 'Los sucesos que se iniciaron hace mucho tiempo marchan hacia una conclusión.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT id_temporada FROM Temporada WHERE numero=5), 16, 'Felina', 'El final de la serie.'),
+
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT id_temporada FROM Temporada WHERE numero=1), 1, 'As degenerado', 'Alcohólico y harto de vivir a la sombra de Daniel, su antiguo rival, Johnny toca fondo y decide reabrir el dojo de karate Cobra Kai.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT id_temporada FROM Temporada WHERE numero=1), 2, 'Golpear primero', 'Daniel ve el nuevo dojo Cobra Kai, y eso le trae recuerdos dolorosos. Más tarde, se entera de que Kyler, el chico que le gusta a Sam, fue atacado por un karateca.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT id_temporada FROM Temporada WHERE numero=1), 3, 'Esqueleto', 'Con la idea de vigilar a Sam, Daniel se ofrece como chaperón para el baile de Halloween. Johnny intenta conseguir más alumnos para su flamante proyecto.'),
