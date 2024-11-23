@@ -6,6 +6,8 @@ CREATE TYPE Tipo AS ENUM
     ('Gold', 'Premium', 'VIP');
 
 CREATE DOMAIN Calificacion AS INT CHECK (VALUE BETWEEN 1 AND 5);
+CREATE DOMAIN Uint AS INT CHECK (VALUE > 0);
+CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE > 0);
 
 -- tablas
 -- note(Loutphi): tal vez querramos revisar los dominios de TEXT y VARCHAR
@@ -33,7 +35,7 @@ CREATE TABLE Usuario(
     fecha_nacimiento DATE,
     nombre_usuario VARCHAR(128) UNIQUE NOT NULL,
     contrasena VARCHAR(128) NOT NULL,
-    tarjeta INT8,
+    tarjeta BigUint,
     apellido VARCHAR(128),
     id_ciudad INT REFERENCES
         Ciudad(id_ciudad)
@@ -67,7 +69,7 @@ END;
 $$;
 
 CREATE TRIGGER inc_perfil_id
-AFTER INSERT ON Perfil
+BEFORE INSERT ON Perfil
 FOR EACH ROW
 EXECUTE PROCEDURE inc_perfil_id_fn();
 
@@ -96,7 +98,7 @@ CREATE TABLE Suscripcion(
     tipo Tipo,
     nombre VARCHAR(128) NOT NULL,
     descripcion TEXT,
-    tarifa INT
+    tarifa Uint
 );
 
 CREATE TABLE Contrata(
@@ -115,7 +117,7 @@ CREATE TABLE Contrata(
 
 CREATE TABLE Contenido(
     id_contenido SERIAL PRIMARY KEY,
-    annio_lanzamiento INT,
+    annio_lanzamiento Uint,
     nombre VARCHAR(128) NOT NULL,
     es_contenido_original BOOL
 );
@@ -125,7 +127,7 @@ CREATE TABLE Pelicula(
         Contenido(id_contenido)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    mins_duracion INT,
+    mins_duracion Uint,
     ganadora_premios BOOL,
     sinopsis TEXT,
     PRIMARY KEY (id_contenido)
@@ -136,7 +138,7 @@ CREATE TABLE Serie(
         Contenido(id_contenido)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    num_episodios INT,
+    num_episodios Uint,
     descripcion TEXT,
     PRIMARY KEY (id_contenido)
 );
@@ -147,7 +149,7 @@ CREATE TABLE Temporada(
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     id_temporada SERIAL,
-    numero INT,
+    numero Uint,
     descripcion TEXT,
     PRIMARY KEY (id_contenido, id_temporada)
 );
@@ -156,7 +158,7 @@ CREATE TABLE Episodio(
     id_contenido INT,
     id_temporada INT,
     id_episodio SERIAL,
-    numero INT,
+    numero Uint,
     nombre VARCHAR(128),
     descripcion TEXT,
     PRIMARY KEY (id_contenido, id_temporada, id_episodio),
@@ -170,7 +172,7 @@ CREATE TABLE Actor(
     id_actor SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
     sexo Sexo,
-    annio_debut INT
+    annio_debut Uint
 );
 
 CREATE TABLE Actua(
