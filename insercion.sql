@@ -231,6 +231,13 @@ INSERT INTO Perfil
     ((SELECT id_usuario FROM Usuario WHERE nombre='Emelina'), 'Evanne', 'epaylie1n@friendfeed.com', 'Somali')
 ;
 
+
+INSERT INTO Suscripcion
+    (tipo, nombre, descripcion, tarifa) VALUES
+    ('Gold', 'Gold', 'Con anuncios; todos los juegos móviles y la mayoría de las series y películas están disponibles. Los títulos no disponibles exhibirán un ícono de candado. Puedes ver contenido en 2 dispositivos compatibles a la vez. Ve en 1080p (Full HD). Puedes descargar contenido en 2 dispositivos compatibles a la vez.', 7),
+    ('Premium', 'Premium', 'Sin anuncios; todos los juegos móviles, series y películas están disponibles. Puedes ver contenido en 2 dispositivos compatibles a la vez. Ve en 1080p (Full HD). Puedes descargar contenido en 2 dispositivos compatibles a la vez.', 15),
+    ('VIP', 'VIP', 'Sin anuncios; todos los juegos móviles, series y películas están disponibles. Puedes ver contenido en 4 dispositivos compatibles a la vez. Ve en 4K + HDR. Puedes descargar contenido en 6 dispositivos compatibles a la vez. Audio Espacial de Netflix.', 23)
+;
     
 -- Contenido
 INSERT INTO Contenido
