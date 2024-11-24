@@ -253,7 +253,6 @@ INSERT INTO Contrata
     ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'acoggen6'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Premium'), '2023-12-20', '2024-12-20')
 ;
     
-
 -- Contenido
 INSERT INTO Contenido
     (annio_lanzamiento, nombre, es_contenido_original) VALUES
@@ -267,6 +266,37 @@ INSERT INTO Contenido
     (2018, 'Yellowstone', FALSE),
     (2018, 'Falsa Identidad', FALSE),
     (2018, 'Cobra Kai', TRUE)
+	  (2023, 'La sociedad de la nieve', TRUE),
+	  (2022, 'Hustle',TRUE ),
+  	(2019, 'Historia de un matrimonio', TRUE),
+	  (2019, 'El Irlandés', TRUE),
+  	(2019, 'El Hoyo', TRUE),
+  	(1990, 'Goodfellas', FALSE),
+	  (2019, 'El Rey', FALSE),
+	  (1999, 'El club de la pelea', FALSE),
+  	(1991, 'Terminator 2: El juicio final', FALSE),
+  	(2019, 'Parásitos', FALSE),
+  	(1975, 'Tiburón ', FALSE),
+  	(1993, 'Parque Jurásico', FALSE),
+    (1983, 'Caracortada', FALSE),
+    (2002, 'Atrápame si puedes', FALSE),
+    (2017, 'Call Me By Your Name', FALSE),
+    (2002, 'El pianista', FALSE),
+    (1994, 'Forrest Gump', FALSE),
+    (2000, 'Gladiador', FALSE),
+    (2010, 'La isla siniestra', FALSE),
+    (2009, 'Bastardos sin gloria', FALSE),
+    (2017, 'Baby: El aprendiz del crimen', FALSE),
+    (2014, 'La teoría del todo', FALSE),
+    (2016, 'La la land', FALSE),
+    (2010, 'La red social', FALSE),
+   	(1997, 'La vida es bella', FALSE),
+    (2013, 'El gran Gatsby', FALSE),
+    (2003, 'Kill Bill: Volumen 1', FALSE),
+    (2019, 'Joker', FALSE),
+    (2014, 'Interestelar', FALSE),
+    (1981, 'Indiana Jones y el arca perdida', FALSE),
+    (2012, 'El Dictador', FALSE)
 ;
 
 
@@ -1322,6 +1352,43 @@ INSERT INTO Episodio
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='Cobra Kai' AND T.numero=6), 8, 'Sospechas en el aire', 'Una crisis personal afecta profundamente a Miguel y a Johnny. Chozen une fuerzas con una persona inesperada para encontrar a sus alumnos, y ambos terminan descubriendo algo más.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='Cobra Kai' AND T.numero=6), 9, 'Sangre por sangre', '¿Quién pasará a la siguiente ronda en el combate de eliminación? ¿Miyagi‑Do o Cobra Kai? Una revelación impactante sacude a Daniel.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='Cobra Kai' AND T.numero=6), 10, 'Eunjangdo', 'Daniel y Johnny entrenan a sus capitanes en lugares históricos de Barcelona. Pero un golpe bajo en las semifinales desata una pelea sin precedentes.')
+;
+
+--Pelicula
+
+INSERT INTO Pelicula 
+(id_contenido, nombre, mins_duracion, ganadora_premio, sinopsis)
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve'), 144, FALSE,'Cuando un avión se estrella en el remoto corazón de los Andes, los sobrevivientes unen fuerzas y pasan a ser su mayor esperanza para volver a casa.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Hustle'), 117, FALSE, 'Cuando un desafortunado cazatalentos de básquetbol encuentra un jugador excepcional en España, se dispone a demostrar que pueden triunfar en la NBA.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio'), 137, TRUE, 'Un director de teatro y su esposa actriz luchan por superar un divorcio que los lleva al extremo personal y creativo.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El Irlandes'), 209, FALSE,'La historia de un sicario de la mafia y su relación con el sindicato de camioneros.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El Hoyo'), 94, FALSE, 'En una prisión vertical, los reclusos de los niveles superiores comen mejor que los de abajo, lo que genera una lucha por la supervivencia.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Goodfellas'), 146, TRUE,'La historia real de Henry Hill y su vida en la mafia, desde sus primeros días hasta su participación en el programa de protección de testigos.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El Rey'), 140, FALSE, 'El joven príncipe Hal se convierte en el rey Enrique V de Inglaterra y debe enfrentar la guerra y la traición.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El club de la pelea'), 139, FALSE, 'Un oficinista desencantado encuentra un escape para sus sentimientos reprimidos cuando conoce al misterioso Tyler Durden, con quien crea una violenta sociedad secreta.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Terminator 2: El juicio final'), 137, TRUE, 'Un nuevo y despiadado androide llega del futuro para asesinar al joven John Connor, pero también llega un Terminator reprogramado para protegerlo.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Parásitos'), 132, TRUE, 'Los astutos miembros de una familia sin trabajo comienzan a desempeñarse como personal doméstico en la casa de una adinerada pareja.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Tiburon'), 124, TRUE, 'Cuando un enorme tiburón afecta a una pequeña ciudad costera, un cazador de tiburones, un biólogo marino y el jefe de la policía local se unen para capturar a la bestia.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Parque Jurásico'), 127, FALSE, 'Dinosaurios clonados escapan de su encierro en un parque temático ultrasecreto y comienzan a cazar a los visitantes.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Caracortada'), 170, FALSE, 'Un importante traficante de drogas de la Florida comete el grave error de consumir su propia mercancía en esta cruda versión de Brian De Palma de la película de 1932.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Atrápame si puedes'), 141, FALSE, 'Un agente del FBI asume como propia la misión de capturar al astuto estafador Frank Abagnale Jr., pero Frank no solo se escapa, sino que se deleita con la persecución.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Call Me By Your Name'), 132, FALSE, 'En Italia, en la década de 1980, en medio del esplendor del verano, Elio y Oliver descubren la embriagadora belleza de un deseo naciente que va a alterar sus vidas para siempre.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), 150, FALSE, 'Drama basado en la vida del famoso pianista polaco Wladyslaw Szpilman mientras lucha por sobrevivir al horror de la tiranía nazi durante la Segunda Guerra Mundial.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump'), 142, TRUE, 'Tom Hanks es Forrest Gump, un hombre ingenuo que resulta estar en medio de casi todos los hechos más importantes de los sesenta y setenta.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Gladiador'), 155, TRUE, 'Un general romano es traicionado y su familia es asesinada por un emperador corrupto. Se convierte en gladiador para vengar a su familia.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La isla siniestra'), 128, FALSE, 'Un alguacil federal investiga la desaparición de una paciente en un hospital psiquiátrico y descubre perturbadores secretos.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), 153, FALSE, 'Un grupo de soldados estadounidenses planea un ataque contra los nazis en París que podría cambiar el destino de la Segunda Guerra Mundial.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen'), 113, FALSE, 'Un joven amante de la música es el conductor de un grupo criminal, pero su última misión está a punto de salirse de control.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo'), 123, FALSE, 'La historia de la vida de Stephen Hawking, desde sus días como estudiante hasta su éxito como físico teórico, a pesar de su diagnóstico de ELA.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La la land'), 128, TRUE, 'Un músico de jazz y una aspirante a actriz se enamoran mientras persiguen sus sueños en Los Ángeles.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La red social'), 120, TRUE, 'La historia de la creación de Facebook y las batallas legales que siguieron, centrada en su fundador, Mark Zuckerberg.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La vida es bella'), 116, TRUE, 'Durante la Segunda Guerra Mundial, un hombre usa su imaginación para proteger a su hijo de los horrores del campo de concentración.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El gran Gatsby'), 143, FALSE, 'Un aspirante a escritor se muda a Nueva York en la década de 1920 y se ve fascinado por la vida de su misterioso y millonario vecino, Jay Gatsby.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Kill Bill: Volumen 1'), 111, FALSE, 'Una exasesina'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Joker'), 122, TRUE, 'La historia de origen del icónico villano de Batman, explorando su descenso a la locura y el caos.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Interestelar'), 169, TRUE, 'Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida'), 115, TRUE, 'El arqueólogo Indiana Jones debe encontrar el Arca de la Alianza antes de que los nazis la utilicen para sus propios fines.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'), 83, FALSE, 'Un dictador ficticio lucha por mantener su poder en una comedia de Sacha Baron Cohen.')
 ;
 
 
