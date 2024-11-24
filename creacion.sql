@@ -6,8 +6,8 @@ CREATE TYPE Tipo AS ENUM
     ('Gold', 'Premium', 'VIP');
 
 CREATE DOMAIN Calificacion AS INT CHECK (VALUE BETWEEN 1 AND 5);
-CREATE DOMAIN Uint AS INT CHECK (VALUE > 0);
-CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE > 0);
+CREATE DOMAIN Uint AS INT CHECK (VALUE >= 0);
+CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE >= 0);
 
 -- tablas
 -- note(Loutphi): tal vez querramos revisar los dominios de TEXT y VARCHAR
@@ -43,7 +43,6 @@ CREATE TABLE Usuario(
         ON DELETE CASCADE
 );
 
--- Hay que hacer un trigger para poner que solo existan hasta 5 perfiles
 CREATE TABLE Perfil(
     id_usuario INT REFERENCES
         Usuario(id_usuario)
@@ -138,7 +137,7 @@ CREATE TABLE Serie(
         Contenido(id_contenido)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    num_episodios Uint,
+        num_episodios Uint DEFAULT 0,
     descripcion TEXT,
     PRIMARY KEY (id_contenido)
 );

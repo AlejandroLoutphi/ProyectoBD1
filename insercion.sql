@@ -272,21 +272,21 @@ INSERT INTO Contenido
 
 -- Serie
 INSERT INTO Serie
-    (id_contenido, num_episodios, descripcion) VALUES
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 62, 'Un profesor de Química de secundaria con cáncer terminal se asocia a un exestudiante para asegurar el futuro de su familia al fabricar y vender metanfetamina.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Lost'), 103, 'Cuando su avión se estrella en una remota isla tropical, los pasajeros deben enfrentarse a peligros ocultos y misteriosas fuerzas malignas para sobrevivir.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Arcane'), 18, 'Mientras la discordia separa las ciudades gemelas de Piltóver y Zaun, dos hermanas se enfrentan en una guerra feroz entre tecnologías mágicas y convicciones opuestas.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Desde Cero'), 8, 'Una artista se enamora de un chef en Italia y se embarca en un viaje transformador, donde descubre el amor, la pérdida, la resiliencia y la esperanza entre culturas y continentes.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Flash'), 184, 'En esta serie del clásico superhéroe, un especialista forense vuelve de un coma y descubre que posee poderes que le permitirán enfrentar a quienes amenacen a su ciudad.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='The Resident'), 107, 'Un estudiante de medicina aprende duras lecciones de la vida en el hospital mientras se somete a un intenso entrenamiento a cargo de un brillante residente.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist'), 218, 'Un brillante criminal se rinde y decide ayudar al FBI a atrapar a otros maleantes, solo si trabaja con Elizabeth Keen, la perfiladora nueva.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone'), 29, 'Contra todo pronóstico, y contra los intereses de empresarios y políticos que planean echarlo, el dueño del rancho más grande de Montana defiende un estilo de vida en decadencia.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad'), 171, 'Diego e Isabel son dos desconocidos que vuelan a México fingiendo ser una pareja para escapar del narcotráfico que lo persigue a él y del marido violento de ella.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 60, 'Enemigos acérrimos. Dojos rivales. Sangre nueva. Daniel y Johnny reviven viejas rivalidades en esta secuela de las películas de «Karate Kid».')
+    (id_contenido, descripcion) VALUES
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 'Un profesor de Química de secundaria con cáncer terminal se asocia a un exestudiante para asegurar el futuro de su familia al fabricar y vender metanfetamina.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Lost'), 'Cuando su avión se estrella en una remota isla tropical, los pasajeros deben enfrentarse a peligros ocultos y misteriosas fuerzas malignas para sobrevivir.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Arcane'), 'Mientras la discordia separa las ciudades gemelas de Piltóver y Zaun, dos hermanas se enfrentan en una guerra feroz entre tecnologías mágicas y convicciones opuestas.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Desde Cero'), 'Una artista se enamora de un chef en Italia y se embarca en un viaje transformador, donde descubre el amor, la pérdida, la resiliencia y la esperanza entre culturas y continentes.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Flash'), 'En esta serie del clásico superhéroe, un especialista forense vuelve de un coma y descubre que posee poderes que le permitirán enfrentar a quienes amenacen a su ciudad.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='The Resident'), 'Un estudiante de medicina aprende duras lecciones de la vida en el hospital mientras se somete a un intenso entrenamiento a cargo de un brillante residente.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist'), 'Un brillante criminal se rinde y decide ayudar al FBI a atrapar a otros maleantes, solo si trabaja con Elizabeth Keen, la perfiladora nueva.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone'), 'Contra todo pronóstico, y contra los intereses de empresarios y políticos que planean echarlo, el dueño del rancho más grande de Montana defiende un estilo de vida en decadencia.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad'), 'Diego e Isabel son dos desconocidos que vuelan a México fingiendo ser una pareja para escapar del narcotráfico que lo persigue a él y del marido violento de ella.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 'Enemigos acérrimos. Dojos rivales. Sangre nueva. Daniel y Johnny reviven viejas rivalidades en esta secuela de las películas de «Karate Kid».')
 ;
 
 
--- Temporada, usar get_season
+-- Temporada
 INSERT INTO Temporada
     (id_contenido, numero, descripcion) VALUES
     ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), 1,'A medida que Walter construye su imperio, su esposa empieza a sospechar de su errática conducta, y la DEA inicia la búsqueda de un nuevo líder de la droga.'),
@@ -350,7 +350,7 @@ INSERT INTO Temporada
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), 6,'El mundial de karate se acerca, y Daniel y Johnny trabajan para rearmar el equipo. Pero viejos enemigos y nuevos peligros minan el camino a la gloria.')
 ;
 
--- Episodio, usar get_episode
+-- Episodio
 INSERT INTO Episodio
     (id_contenido, id_temporada, numero, nombre, descripcion) VALUES
     ((SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='Breaking Bad' AND T.numero=1), 1, 'Principio del fin', 'Un profesor de química de escuela secundaria recurre a la venta de drogas para mantener a su familia.'),
