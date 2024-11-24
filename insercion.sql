@@ -1406,3 +1406,71 @@ FROM Contenido C, Perfil P, generate_series(1, 5) S
 ORDER BY RANDOM()
 LIMIT 2000
 ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
+
+--Genero
+INSERT INTO Genero
+	(nombre, descripcion) Values
+	('Comedia', 'Género dramático opuesto a la tragedia y, por lo tanto, está relacionado casi siempre con historias con final feliz.'),
+	('Aventura','Refleja un mundo heroico de combates y aventuras, y en el que suele predominar la acción y valores caballerescos.'),
+	('Ciencia ficción','Sitúa la acción en unas coordenadas espacio-temporales imaginarias y diferentes a las nuestras, y que especula racionalmente sobre posibles avances científicos o sociales y su impacto en la sociedad.'),
+	('Drama','Prevalecen acciones y situaciones tensas y pasiones conflictivas.'),
+	('Fantástico','Se caracteriza por contener algún elemento de fantasía, por tenue que sea.'),
+	('Terror','Se caracteriza por su voluntad de provocar en el espectador sensaciones de pavor, terror, miedo, disgusto, repugnancia, horror, incomodidad o preocupación.'),
+	('Suspenso','Predominan las situaciones de tensión, provocando temor o eventualmente asustando o sobresaltando al espectador.');
+
+--Actor
+INSERT INTO Actor
+	(nombre, sexo, annio_debut) Values
+	('Daniel Brühl', 'M', 1999),
+	('Bryan Cranston', 'M', 1993),
+	('Aaron Paul', 'M', 2002),
+	('Tom Hanks', 'M', 1988),
+	('Leonardo DiCaprio', 'M', 1993),
+	('Michelle Williams', 'F', 1995),
+	('Brad Pitt', 'M', 1992),
+	('Robert De Niro', 'M', 1976),
+	('Timothée Chalamet', 'M', 2012),
+	('Andrew Garfield', 'M', 2007),
+	('Jesse Eisenberg', 'M', 2002),
+	('Adrien Brody', 'M', 1996),
+	('Emilia Fox', 'F', 2003),
+	('Al Pacino', 'M', 1969);
+
+--Actua
+INSERT INTO Actua
+	(id_actor, id_contenido, premios, es_protagonista) Values
+	((SELECT id_actor FROM Actor WHERE nombre='Daniel Brühl'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), FALSE, FALSE),
+	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'Bastardos sin gloria'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'El club de la pelea'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Bryan Cranston'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Aaron Paul'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Al Pacino'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Andrew Garfield'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Jesse Eisenberg'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Tom Hanks'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Adrien Brody'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Emilia Fox'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, TRUE);
+
+--Tiene
+INSERT INTO Tiene
+	(id_genero, id_contenido) Values
+	((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
+	((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada')),
+	((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social')),
+	((SELECT id_genero FROM Genero WHERE nombre='Comedia'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump')),
+	((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista')),
+	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista')),
+	((SELECT id_genero FROM Genero WHERE nombre='Terror'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburon'));
+
+--Requiere
+INSERT INTO Requiere
+	SELECT C.id_contenido, S.id_suscripcion
+	FROM Contenido C, Suscripcion S
+	ORDER BY RANDOM()
+	LIMIT 20
+	ON CONFLICT (id_contenido, id_suscripcion) DO NOTHING;
