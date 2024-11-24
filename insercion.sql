@@ -24,7 +24,7 @@ INSERT INTO Pais
 ;
 
 
--- Paises, no se que hacer para las descripciones
+-- Ciudades, no se que hacer para las descripciones
 INSERT INTO Ciudad
     (nombre, id_pais) VALUES
     ('Cologne', (SELECT id_pais FROM Pais WHERE nombre LIKE 'Alemania')),
@@ -130,7 +130,7 @@ INSERT INTO Ciudad
 ;
 
 
--- Usuario, falta id_ciudad
+-- Usuario
 INSERT INTO Usuario
     (sexo, nombre, email, fecha_nacimiento, nombre_usuario, contrasena, tarjeta, apellido, id_ciudad) VALUES
     ('M', 'Aristotle', 'apendre0@desdev.cn', '1980-05-08', 'apendre0', '$2a$04$MDSUGHSNaGjRgGKgaNHs2eq3k5/ge.mLwpKul2tlOLzHZIeS4x.WG', 5610034195179049, 'Pendre', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Palmira')),
@@ -265,18 +265,18 @@ INSERT INTO Contenido
     (2019, 'The Blacklist', FALSE),
     (2018, 'Yellowstone', FALSE),
     (2018, 'Falsa Identidad', FALSE),
-    (2018, 'Cobra Kai', TRUE)
-	  (2023, 'La sociedad de la nieve', TRUE),
-	  (2022, 'Hustle',TRUE ),
+    (2018, 'Cobra Kai', TRUE),
+	(2023, 'La sociedad de la nieve', TRUE),
+	(2022, 'Hustle',TRUE ),
   	(2019, 'Historia de un matrimonio', TRUE),
-	  (2019, 'El Irlandés', TRUE),
+	(2019, 'El Irlandes', TRUE),
   	(2019, 'El Hoyo', TRUE),
   	(1990, 'Goodfellas', FALSE),
-	  (2019, 'El Rey', FALSE),
-	  (1999, 'El club de la pelea', FALSE),
+	(2019, 'El Rey', FALSE),
+	(1999, 'El club de la pelea', FALSE),
   	(1991, 'Terminator 2: El juicio final', FALSE),
   	(2019, 'Parásitos', FALSE),
-  	(1975, 'Tiburón ', FALSE),
+  	(1975, 'Tiburon', FALSE),
   	(1993, 'Parque Jurásico', FALSE),
     (1983, 'Caracortada', FALSE),
     (2002, 'Atrápame si puedes', FALSE),
@@ -1355,9 +1355,8 @@ INSERT INTO Episodio
 ;
 
 --Pelicula
-
 INSERT INTO Pelicula 
-(id_contenido, nombre, mins_duracion, ganadora_premio, sinopsis)
+    (id_contenido, mins_duracion, ganadora_premios, sinopsis) VALUES
     ((SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve'), 144, FALSE,'Cuando un avión se estrella en el remoto corazón de los Andes, los sobrevivientes unen fuerzas y pasan a ser su mayor esperanza para volver a casa.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Hustle'), 117, FALSE, 'Cuando un desafortunado cazatalentos de básquetbol encuentra un jugador excepcional en España, se dispone a demostrar que pueden triunfar en la NBA.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio'), 137, TRUE, 'Un director de teatro y su esposa actriz luchan por superar un divorcio que los lleva al extremo personal y creativo.'),
@@ -1380,7 +1379,7 @@ INSERT INTO Pelicula
     ((SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), 153, FALSE, 'Un grupo de soldados estadounidenses planea un ataque contra los nazis en París que podría cambiar el destino de la Segunda Guerra Mundial.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen'), 113, FALSE, 'Un joven amante de la música es el conductor de un grupo criminal, pero su última misión está a punto de salirse de control.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo'), 123, FALSE, 'La historia de la vida de Stephen Hawking, desde sus días como estudiante hasta su éxito como físico teórico, a pesar de su diagnóstico de ELA.'),
-    ((SELECT id_contenido FROM Contenido WHERE nombre='La la land'), 128, TRUE, 'Un músico de jazz y una aspirante a actriz se enamoran mientras persiguen sus sueños en Los Ángeles.'),
+    ((SELECT id_contenido FROM Contenido WHERE nombre='La la land'), 128, TRUE, 'Un músico de jazz y una aspirante a actriz se enamoran mientras persiguen sus sueños en Los Angeles.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='La red social'), 120, TRUE, 'La historia de la creación de Facebook y las batallas legales que siguieron, centrada en su fundador, Mark Zuckerberg.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='La vida es bella'), 116, TRUE, 'Durante la Segunda Guerra Mundial, un hombre usa su imaginación para proteger a su hijo de los horrores del campo de concentración.'),
     ((SELECT id_contenido FROM Contenido WHERE nombre='El gran Gatsby'), 143, FALSE, 'Un aspirante a escritor se muda a Nueva York en la década de 1920 y se ve fascinado por la vida de su misterioso y millonario vecino, Jay Gatsby.'),
