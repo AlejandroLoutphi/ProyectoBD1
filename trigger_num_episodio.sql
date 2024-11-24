@@ -1,3 +1,5 @@
+-- trigger_num_episodio.sql debe correrse antes de insercion.sql
+-- esto es para que todas las series tengan datos correctos
 CREATE OR REPLACE FUNCTION upd_num_episodios_serie()
 RETURNS TRIGGER
 LANGUAGE PLPGSQL
