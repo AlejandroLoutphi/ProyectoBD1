@@ -6,19 +6,20 @@ CREATE TYPE Tipo AS ENUM
     ('Gold', 'Premium', 'VIP');
 
 CREATE DOMAIN Calificacion AS INT CHECK (VALUE BETWEEN 1 AND 5);
+CREATE DOMAIN Uint AS INT CHECK (VALUE >= 0);
+CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE >= 0);
 
 -- tablas
--- note(Loutphi): tal vez querramos revisar los dominios de TEXT y VARCHAR
 CREATE TABLE Pais(
     id_pais SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT
+    descripcion VARCHAR(2048)
 );
 
 CREATE TABLE Ciudad(
     id_ciudad SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     id_pais INT REFERENCES
         Pais(id_pais)
         ON UPDATE CASCADE
@@ -29,11 +30,11 @@ CREATE TABLE Usuario(
     id_usuario SERIAL PRIMARY KEY,
     sexo Sexo,
     nombre VARCHAR(128) NOT NULL,
-    email VARCHAR(128),
+    email VARCHAR(128) UNIQUE NOT NULL,
     fecha_nacimiento DATE,
-    nombre_usuario VARCHAR(128) NOT NULL,
+    nombre_usuario VARCHAR(128) UNIQUE NOT NULL,
     contrasena VARCHAR(128) NOT NULL,
-    tarjeta INT8,
+    tarjeta BigUint,
     apellido VARCHAR(128),
     id_ciudad INT REFERENCES
         Ciudad(id_ciudad)
@@ -41,7 +42,6 @@ CREATE TABLE Usuario(
         ON DELETE CASCADE
 );
 
--- Hay que hacer un trigger para poner que solo existan hasta 5 perfiles
 CREATE TABLE Perfil(
     id_usuario INT REFERENCES
         Usuario(id_usuario)
@@ -54,10 +54,27 @@ CREATE TABLE Perfil(
     PRIMARY KEY (id_usuario, id_perfil)
 );
 
+CREATE OR REPLACE FUNCTION inc_perfil_id_fn()
+RETURNS TRIGGER
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    IF ((SELECT count(*) FROM Perfil P WHERE P.id_usuario = NEW.id_usuario) >= 5) THEN
+        RAISE EXCEPTION 'Solo pueden haber hasta 5 perfiles por usuario';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER inc_perfil_id
+BEFORE INSERT ON Perfil
+FOR EACH ROW
+EXECUTE PROCEDURE inc_perfil_id_fn();
+
 CREATE TABLE Genero(
     id_genero SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT
+    descripcion VARCHAR(2048)
 );
 
 CREATE TABLE Prefiere(
@@ -78,8 +95,8 @@ CREATE TABLE Suscripcion(
     id_suscripcion SERIAL PRIMARY KEY,
     tipo Tipo,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT,
-    tarifa INT
+    descripcion VARCHAR(2048),
+    tarifa Uint
 );
 
 CREATE TABLE Contrata(
@@ -98,7 +115,7 @@ CREATE TABLE Contrata(
 
 CREATE TABLE Contenido(
     id_contenido SERIAL PRIMARY KEY,
-    annio_lanzamiento INT,
+    annio_lanzamiento Uint,
     nombre VARCHAR(128) NOT NULL,
     es_contenido_original BOOL
 );
@@ -108,9 +125,9 @@ CREATE TABLE Pelicula(
         Contenido(id_contenido)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    mins_duracion INT,
+    mins_duracion Uint,
     ganadora_premios BOOL,
-    sinopsis TEXT,
+    sinopsis VARCHAR(2048),
     PRIMARY KEY (id_contenido)
 );
 
@@ -119,8 +136,8 @@ CREATE TABLE Serie(
         Contenido(id_contenido)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
-    num_episodios INT,
-    descripcion TEXT,
+        num_episodios Uint DEFAULT 0,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido)
 );
 
@@ -130,8 +147,8 @@ CREATE TABLE Temporada(
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     id_temporada SERIAL,
-    numero INT,
-    descripcion TEXT,
+    numero Uint,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido, id_temporada)
 );
 
@@ -139,9 +156,9 @@ CREATE TABLE Episodio(
     id_contenido INT,
     id_temporada INT,
     id_episodio SERIAL,
-    numero INT,
+    numero Uint,
     nombre VARCHAR(128),
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido, id_temporada, id_episodio),
     FOREIGN KEY (id_contenido, id_temporada) REFERENCES
         Temporada(id_contenido, id_temporada)
@@ -153,7 +170,7 @@ CREATE TABLE Actor(
     id_actor SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
     sexo Sexo,
-    annio_debut INT
+    annio_debut Uint
 );
 
 CREATE TABLE Actua(
