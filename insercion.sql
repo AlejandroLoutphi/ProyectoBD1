@@ -133,7 +133,7 @@ INSERT INTO Ciudad
 -- Usuario
 INSERT INTO Usuario
     (sexo, nombre, email, fecha_nacimiento, nombre_usuario, contrasena, tarjeta, apellido, id_ciudad) VALUES
-    ('M', 'Aristotle', 'apendre0@desdev.cn', '1980-05-08', 'apendre0', '$2a$04$MDSUGHSNaGjRgGKgaNHs2eq3k5/ge.mLwpKul2tlOLzHZIeS4x.WG', 5610034195179049, 'Pendre', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Palmira')),
+    ('M', 'Adrian', 'apendre0@desdev.cn', '1980-05-08', 'apendre0', '$2a$04$MDSUGHSNaGjRgGKgaNHs2eq3k5/ge.mLwpKul2tlOLzHZIeS4x.WG', 5610034195179049, 'Pendre', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Palmira')),
     ('F', 'Isadora', 'ipashler1@is.gd', '1973-12-08', 'ipashler1', '$2a$04$JS4Zkz7gqJWl/UgUYTk/GOTCPWijv0yKMejhgicTCGYklLeV8kWY.', 6771566613558594137, 'Pashler', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Santa Fe')),
     ('F', 'Tierney', 'tovendon2@furl.net', '1994-09-10', 'tovendon2', '$2a$04$D7WxVJR6b2krANo.wQFIA.h.9VEqN7OpMC/6YyS6pS51TML058MA2', 5010129022211928, 'Ovendon', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Suwon')),
     ('F', 'Angie', 'acellier3@diigo.com', '1996-12-10', 'acellier3', '$2a$04$79eX70F2dZqtK55RTRAg1.K6XiAK/Z732xKtMExy7O/nAJ2jYmYR.', 6759044056761978456, 'Cellier', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Changwon')),
@@ -156,7 +156,7 @@ INSERT INTO Usuario
     ('F', 'Liane', 'lbaldettik@printfriendly.com', '1990-10-09', 'lbaldettik', '$2a$04$T8QBDoT602BcuPLxRZDGUeIzh30f6gjKh5rgtPKCcffHEhpE8Sv0O', 374283544948375, 'Baldetti', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Juarez')),
     ('F', 'Zorah', 'zmabbotl@wp.com', '1973-09-07', 'zmabbotl', '$2a$04$fJaOziyq.hNlBxRyOgV7ROPcjGOWajZl463zTenJrr2aEBZeDMHwa', 4026587283064788, 'Mabbot', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Milan')),
     ('F', 'Emelina', 'elittledykem@sohu.com', '2006-10-27', 'elittledykem', '$2a$04$jpvtF6At.udOLmCM2HZl6enleD4J85S/fB2DlhIBRNWP1w2hbQoWC', 3581685692770356, 'Littledyke', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Bareilly')),
-    ('M', 'Adrian', 'akenann@eepurl.com', '1996-10-09', 'akenann', '$2a$04$M7YTjtQVZZ716KEQNVE5N.722hfhduxbpq/.AU77T9cLt0rqKTg32', 3566342456809629, 'Kenan', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Cranbourne')),
+    ('M', 'Aristotle', 'akenann@eepurl.com', '1996-10-09', 'akenann', '$2a$04$M7YTjtQVZZ716KEQNVE5N.722hfhduxbpq/.AU77T9cLt0rqKTg32', 3566342456809629, 'Kenan', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Cranbourne')),
     ('F', 'Adriana', 'fhowato@quantcast.com', '1971-02-18', 'fhowato', '$2a$04$hiU86PedlQ0C4sKwDVFhvuWxZqkhDshWF1e5YikMtJUMm/95vEp.e', 3547025375251304, 'Howat', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Cali')),
     ('F', 'Florentia', 'ftembeyp@nature.com', '1984-10-19', 'ftembeyp', '$2a$04$T/Be0egoY1SoCZ50k4ZrGO13l43eDpBZBYMgQbbKebmTMyka4e9yC', 3574561614698695, 'Tembey', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Barranquilla  ')),
     ('M', 'Wilbur', 'wnultyq@blogtalkradio.com', '1973-07-22', 'wnultyq', '$2a$04$cY4WVVri7XWjoG7OAi5OG.K0wLD9nWDxbX7mOTVJO.njxBcD8smEq', 3551683367325727, 'Nulty', (SELECT id_ciudad FROM Ciudad WHERE nombre LIKE 'Salt Lake City')),
@@ -1398,13 +1398,32 @@ FROM Contenido C, Perfil P
 ORDER BY RANDOM()
 LIMIT 200;
 
+--Requiere
+INSERT INTO Requiere
+SELECT C.id_contenido, S.id_suscripcion
+FROM Contenido C, Suscripcion S
+WHERE C.id_contenido NOT IN (SELECT id_contenido FROM Requiere)
+ORDER BY RANDOM()
+LIMIT 5
+ON CONFLICT (id_contenido, id_suscripcion) DO NOTHING;
 
 -- Visualizacion
 INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
 SELECT C.id_contenido, P.id_usuario, P.id_perfil, S
 FROM Contenido C, Perfil P, generate_series(1, 5) S
+WHERE C.id_contenido NOT IN (SELECT id_contenido FROM Requiere)
 ORDER BY RANDOM()
-LIMIT 2000
+LIMIT 200
+ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
+
+-- Visualizacion para suscriptores
+INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
+SELECT C.id_contenido, P.id_usuario, P.id_perfil, S
+FROM Contenido C, Perfil P, generate_series(1, 5) S, Contrata H
+WHERE P.id_usuario = H.id_usuario
+AND C.id_contenido IN (SELECT id_contenido FROM Requiere WHERE id_suscripcion <= H.id_suscripcion)
+ORDER BY RANDOM()
+LIMIT 10
 ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
 
 --Genero
@@ -1467,10 +1486,11 @@ INSERT INTO Tiene
 	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista')),
 	((SELECT id_genero FROM Genero WHERE nombre='Terror'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburon'));
 
---Requiere
-INSERT INTO Requiere
-	SELECT C.id_contenido, S.id_suscripcion
-	FROM Contenido C, Suscripcion S
-	ORDER BY RANDOM()
-	LIMIT 5
-	ON CONFLICT (id_contenido, id_suscripcion) DO NOTHING;
+-- Extra en visualizacion para garantizar que Adrian haya visto los shows que requieren suscripcion
+INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
+SELECT C.id_contenido, P.id_usuario, P.id_perfil, 4
+FROM Contenido C, Perfil P, Requiere R
+WHERE R.id_contenido = C.id_contenido
+AND P.id_usuario = (SELECT id_usuario FROM Perfil WHERE email = 'erenihan5@bandcamp.com')
+LIMIT 2
+ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
