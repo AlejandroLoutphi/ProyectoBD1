@@ -10,17 +10,17 @@ CREATE DOMAIN Uint AS INT CHECK (VALUE >= 0);
 CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE >= 0);
 
 -- tablas
--- note(Loutphi): tal vez querramos revisar los dominios de TEXT y VARCHAR
+-- note(Loutphi): tal vez querramos revisar los dominios de VARCHAR(2048) y VARCHAR
 CREATE TABLE Pais(
     id_pais SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT
+    descripcion VARCHAR(2048)
 );
 
 CREATE TABLE Ciudad(
     id_ciudad SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     id_pais INT REFERENCES
         Pais(id_pais)
         ON UPDATE CASCADE
@@ -75,7 +75,7 @@ EXECUTE PROCEDURE inc_perfil_id_fn();
 CREATE TABLE Genero(
     id_genero SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT
+    descripcion VARCHAR(2048)
 );
 
 CREATE TABLE Prefiere(
@@ -96,7 +96,7 @@ CREATE TABLE Suscripcion(
     id_suscripcion SERIAL PRIMARY KEY,
     tipo Tipo,
     nombre VARCHAR(128) NOT NULL,
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     tarifa Uint
 );
 
@@ -128,7 +128,7 @@ CREATE TABLE Pelicula(
         ON DELETE CASCADE,
     mins_duracion Uint,
     ganadora_premios BOOL,
-    sinopsis TEXT,
+    sinopsis VARCHAR(2048),
     PRIMARY KEY (id_contenido)
 );
 
@@ -138,7 +138,7 @@ CREATE TABLE Serie(
         ON UPDATE CASCADE
         ON DELETE CASCADE,
         num_episodios Uint DEFAULT 0,
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido)
 );
 
@@ -149,7 +149,7 @@ CREATE TABLE Temporada(
         ON DELETE CASCADE,
     id_temporada SERIAL,
     numero Uint,
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido, id_temporada)
 );
 
@@ -159,7 +159,7 @@ CREATE TABLE Episodio(
     id_episodio SERIAL,
     numero Uint,
     nombre VARCHAR(128),
-    descripcion TEXT,
+    descripcion VARCHAR(2048),
     PRIMARY KEY (id_contenido, id_temporada, id_episodio),
     FOREIGN KEY (id_contenido, id_temporada) REFERENCES
         Temporada(id_contenido, id_temporada)
