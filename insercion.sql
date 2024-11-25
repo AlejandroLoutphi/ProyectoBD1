@@ -253,7 +253,7 @@ INSERT INTO Contrata
     ((SELECT id_usuario FROM Usuario WHERE nombre_usuario = 'acoggen6'), (SELECT id_suscripcion FROM Suscripcion WHERE nombre = 'Premium'), '2023-12-20', '2024-12-20')
 ;
     
--- Contenido
+---- Contenido
 INSERT INTO Contenido
     (annio_lanzamiento, nombre, es_contenido_original) VALUES
     (2008, 'Breaking Bad', FALSE),
