@@ -1437,6 +1437,14 @@ INSERT INTO Genero
 	('Terror','Se caracteriza por su voluntad de provocar en el espectador sensaciones de pavor, terror, miedo, disgusto, repugnancia, horror, incomodidad o preocupación.'),
 	('Suspenso','Predominan las situaciones de tensión, provocando temor o eventualmente asustando o sobresaltando al espectador.');
 
+-- Prefiere
+INSERT INTO Prefiere (id_usuario, id_perfil, id_genero)
+SELECT P.id_usuario, P.id_perfil, G.id_genero
+FROM Perfil P, Genero G
+ORDER BY RANDOM()
+LIMIT 120
+ON CONFLICT (id_usuario, id_perfil, id_genero) DO NOTHING;
+
 --Actor
 INSERT INTO Actor
 	(nombre, sexo, annio_debut) Values

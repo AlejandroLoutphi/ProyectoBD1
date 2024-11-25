@@ -10,7 +10,6 @@ CREATE DOMAIN Uint AS INT CHECK (VALUE >= 0);
 CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE >= 0);
 
 -- tablas
--- note(Loutphi): tal vez querramos revisar los dominios de VARCHAR(2048) y VARCHAR
 CREATE TABLE Pais(
     id_pais SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
