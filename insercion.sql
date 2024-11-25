@@ -1472,5 +1472,5 @@ INSERT INTO Requiere
 	SELECT C.id_contenido, S.id_suscripcion
 	FROM Contenido C, Suscripcion S
 	ORDER BY RANDOM()
-	LIMIT 20
+	LIMIT 5
 	ON CONFLICT (id_contenido, id_suscripcion) DO NOTHING;
