@@ -1435,7 +1435,15 @@ INSERT INTO Genero
 	('Drama','Prevalecen acciones y situaciones tensas y pasiones conflictivas.'),
 	('Fantástico','Se caracteriza por contener algún elemento de fantasía, por tenue que sea.'),
 	('Terror','Se caracteriza por su voluntad de provocar en el espectador sensaciones de pavor, terror, miedo, disgusto, repugnancia, horror, incomodidad o preocupación.'),
-	('Suspenso','Predominan las situaciones de tensión, provocando temor o eventualmente asustando o sobresaltando al espectador.');
+	('Suspenso','Predominan las situaciones de tensión, provocando temor o eventualmente asustando o sobresaltando al espectador.')
+	('Crimen','El género de crimen se centra en historias relacionadas con actividades delictivas y el mundo criminal. Las tramas suelen involucrar robos, asesinatos, mafias, y la lucha entre criminales y la ley.')
+	('Guerra','Las películas de guerra se ambientan en tiempos de conflicto bélico y suelen retratar batallas, estrategias militares y la vida de los soldados.')
+	('Acción','El género de acción se caracteriza por secuencias emocionantes y dinámicas que incluyen persecuciones, peleas, explosiones y acrobacias.')
+	('Biografía','Las películas biográficas, o biopics, narran la vida de personas reales, destacando sus logros, desafíos y momentos significativos.')
+	('Musical','El género musical combina la narrativa cinematográfica con canciones y números de baile que avanzan la trama o desarrollan los personajes.')
+
+	;
+
 
 -- Prefiere
 INSERT INTO Prefiere (id_usuario, id_perfil, id_genero)
@@ -1451,6 +1459,24 @@ INSERT INTO Actor
 	('Daniel Brühl', 'M', 1999),
 	('Bryan Cranston', 'M', 1993),
 	('Aaron Paul', 'M', 2002),
+	('Matthew Fox', 'M', 1966)
+	('Evangeline Lilly', 'F', 1979)
+	('Hailee Steinfeld', 'F', 1996)
+	('Ella Purnell', 'F', 1996)
+	('Zoe Saldana', 'F', 1978)
+	('Eugenio Mastrandrea', 'M', 1993)
+	('Grant Gustin', 'M', 1990)
+	('Candice Patton', 'F', 1988)
+	('Matt Czuchry', 'M', 1977)
+	('Emily VanCamp', 'F', 1986)
+	('James Spader', 'M', 1960)
+	('Megan Boone', 'F', 1983)
+	('Kevin Costner', 'M', 1955)
+	('Kelly Reilly', 'F', 1977)
+	('Luis Ernesto Franco', 'M', 1983)
+	('Camila Sodi', 'F', 1986)
+	('Ralph Macchio', 'M', 1961)
+	('William Zabka', 'M', 1965)
 	('Tom Hanks', 'M', 1988),
 	('Leonardo DiCaprio', 'M', 1993),
 	('Michelle Williams', 'F', 1995),
@@ -1461,38 +1487,228 @@ INSERT INTO Actor
 	('Jesse Eisenberg', 'M', 2002),
 	('Adrien Brody', 'M', 1996),
 	('Emilia Fox', 'F', 2003),
-	('Al Pacino', 'M', 1969);
+	('Al Pacino', 'M', 1969)
+	('Enzo Vogrincic', 'M', 1993)
+	('Agustín Pardella', 'M', 1994)
+	('Adam Sandler', 'M', 1966)
+	('Queen Latifah', 'F', 1970)
+	('Scarlett Johansson', 'F', 1984)
+	('Adam Driver', 'M', 1983)
+	('Robert De Niro', 'M', 1943)
+	('Al Pacino', 'M', 1940)
+	('Iván Massagué', 'M', 1976)
+	('Antonia San Juan', 'F', 1961)
+	('Ray Liotta', 'M', 1954)
+	('Joel Edgerton', 'M', 1974)
+	('Brad Pitt', 'M', 1963)
+	('Edward Norton', 'M', 1969)
+	('Arnold Schwarzenegger', 'M', 1947)
+	('Linda Hamilton', 'F', 1956)
+	('Song Kang-ho', 'M', 1967)
+	('Choi Woo-shik', 'M', 1990)
+	('Roy Scheider', 'M', 1932)
+	('Richard Dreyfuss', 'M', 1947)
+	('Sam Neill', 'M', 1947)
+	('Laura Dern', 'F', 1967)
+	('Michelle Pfeiffer', 'F', 1958)
+	('Leonardo DiCaprio', 'M', 1974)
+	('Armie Hammer', 'M', 1986)
+	('Thomas Kretschmann', 'M', 1962)
+	('Robin Wright', 'F', 1966)
+	('Russell Crowe', 'M', 1964)
+	('Joaquin Phoenix', 'M', 1974)
+	('Mark Ruffalo', 'M', 1967)
+	('Christoph Waltz', 'M', 1956)
+	('Ansel Elgort', 'M', 1994)
+	('Lily James', 'F', 1989)
+	('Eddie Redmayne', 'M', 1982)
+	('Felicity Jones', 'F', 1983)
+	('Ryan Gosling', 'M', 1980)
+	('Emma Stone', 'F', 1988)
+	('Roberto Benigni', 'M', 1952)
+	('Nicoletta Braschi', 'F', 1960)
+	('Carey Mulligan', 'F', 1985)
+	('Uma Thurman', 'F', 1970)
+	('Lucy Liu', 'F', 1968)
+	('Matthew McConaughey', 'M', 1969)
+	('Anne Hathaway', 'F', 1982)
+	('Harrison Ford', 'M', 1942)
+	('Karen Allen', 'F', 1951)
+	('Sacha Baron Cohen', 'M', 1971)
+	('Anna Faris', 'F', 1976)
+
+
+
+
+	;
 
 --Actua
 INSERT INTO Actua
 	(id_actor, id_contenido, premios, es_protagonista) Values
-	((SELECT id_actor FROM Actor WHERE nombre='Daniel Brühl'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), FALSE, FALSE),
-	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'Bastardos sin gloria'), TRUE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'El club de la pelea'), TRUE, TRUE),
 	((SELECT id_actor FROM Actor WHERE nombre='Bryan Cranston'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), TRUE, TRUE),
 	((SELECT id_actor FROM Actor WHERE nombre='Aaron Paul'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad'), TRUE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Matthew Fox'), (SELECT id_contenido FROM Contenido WHERE nombre='Lost'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Evangeline Lilly'), (SELECT id_contenido FROM Contenido WHERE nombre='Lost'), TRUE, TRUE),	
+
+	((SELECT id_actor FROM Actor WHERE nombre='Hailee Steinfeld'), (SELECT id_contenido FROM Contenido WHERE nombre='Arcane'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Ella Purnell'), (SELECT id_contenido FROM Contenido WHERE nombre='Arcane'), TRUE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Zoe Saldana'), (SELECT id_contenido FROM Contenido WHERE nombre='Desde Cero'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Eugenio Mastrandrea'), (SELECT id_contenido FROM Contenido WHERE nombre='Desde Cero'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Grant Gustin'), (SELECT id_contenido FROM Contenido WHERE nombre='Flash'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Candice Patton'), (SELECT id_contenido FROM Contenido WHERE nombre='Flash'), TRUE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Matt Czuchry'), (SELECT id_contenido FROM Contenido WHERE nombre='The Resident'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Emily VanCamp'), (SELECT id_contenido FROM Contenido WHERE nombre='The Resident'), FALSE, FALSE),
+	
+	((SELECT id_actor FROM Actor WHERE nombre='James Spader'), (SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Megan Boone'), (SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Kevin Costner'), (SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Kelly Reilly'), (SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Luis Ernesto Franco'), (SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Camila Sodi'), (SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Ralph MacchiWilliam Zabka'), (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='William Zabka'), (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), FALSE, TRUE),
+	
+	((SELECT id_actor FROM Actor WHERE nombre='Daniel Brühl'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), FALSE, FALSE),
+	((SELECT id_actor FROM Actor WHERE nombre='Christoph Waltz'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria'), TRUE, FALSE),
+	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'Bastardos sin gloria'), TRUE, TRUE),
+	
+	((SELECT id_actor FROM Actor WHERE nombre='Brad Pitt'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'El club de la pelea'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Edward Norton'), (SELECT id_contenido FROM Contenido WHERE nombre LIKE 'El club de la pelea'), FALSE, TRUE),
+	
+	((SELECT id_actor FROM Actor WHERE nombre='Adrien Brody'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Emilia Fox'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, FALSE)
+	((SELECT id_actor FROM Actor WHERE nombre='Thomas Kretschmann'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Enzo Vogrincic'), (SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Agustín Pardella'), (SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Adam Sandler'), (SELECT id_contenido FROM Contenido WHERE nombre='Hustle'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Queen Latifah'), (SELECT id_contenido FROM Contenido WHERE nombre='Hustle'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Scarlett Johansson'), (SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Adam Driver'), (SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Robert De Niro'), (SELECT id_contenido FROM Contenido WHERE nombre='El Irlandés'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Al Pacino'), (SELECT id_contenido FROM Contenido WHERE nombre='El Irlandés'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Iván Massagué'), (SELECT id_contenido FROM Contenido WHERE nombre='El Hoyo'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Antonia San Juan'), (SELECT id_contenido FROM Contenido WHERE nombre='El Hoyo'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Robert De Niro'), (SELECT id_contenido FROM Contenido WHERE nombre='Goodfellas'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Ray Liotta'), (SELECT id_contenido FROM Contenido WHERE nombre='Goodfellas'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Timothée Chalamet'), (SELECT id_contenido FROM Contenido WHERE nombre='El Rey'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Joel Edgerton'), (SELECT id_contenido FROM Contenido WHERE nombre='El Rey'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Arnold Schwarzenegger'), (SELECT id_contenido FROM Contenido WHERE nombre='Terminator 2: El juicio final'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Linda Hamilton'), (SELECT id_contenido FROM Contenido WHERE nombre='Terminator 2: El juicio final'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Song Kang-ho'), (SELECT id_contenido FROM Contenido WHERE nombre='Parásitos'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Choi Woo-shik'), (SELECT id_contenido FROM Contenido WHERE nombre='Parásitos'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Roy Scheider'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburón'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Richard Dreyfuss'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburón'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Sam Neill'), (SELECT id_contenido FROM Contenido WHERE nombre='Parque Jurásico'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Laura Dern'), (SELECT id_contenido FROM Contenido WHERE nombre='Parque Jurásico'), TRUE, TRUE),
+
 	((SELECT id_actor FROM Actor WHERE nombre='Al Pacino'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada'), FALSE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Andrew Garfield'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), TRUE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Jesse Eisenberg'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), TRUE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Tom Hanks'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump'), TRUE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Adrien Brody'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, TRUE),
-	((SELECT id_actor FROM Actor WHERE nombre='Emilia Fox'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista'), FALSE, TRUE);
+	((SELECT id_actor FROM Actor WHERE nombre='Michelle Pfeiffer'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Leonardo DiCaprio'), (SELECT id_contenido FROM Contenido WHERE nombre='Atrápame si puedes'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Tom Hanks'), (SELECT id_contenido FROM Contenido WHERE nombre='Atrápame si puedes'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Timothée Chalamet'), (SELECT id_contenido FROM Contenido WHERE nombre='Call Me By Your Name'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Armie Hammer'), (SELECT id_contenido FROM Contenido WHERE nombre='Call Me By Your Name'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Tom Hanks'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Robin Wright'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Russell Crowe'), (SELECT id_contenido FROM Contenido WHERE nombre='Gladiador'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Joaquin Phoenix'), (SELECT id_contenido FROM Contenido WHERE nombre='Gladiador'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Leonardo DiCaprio'), (SELECT id_contenido FROM Contenido WHERE nombre='La isla siniestra'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Mark Ruffalo'), (SELECT id_contenido FROM Contenido WHERE nombre='La isla siniestra'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Ansel Elgort'), (SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Lily James'), (SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Eddie Redmayne'), (SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Felicity Jones'), (SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Ryan Gosling'), (SELECT id_contenido FROM Contenido WHERE nombre='La La Land'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Emma Stone'), (SELECT id_contenido FROM Contenido WHERE nombre='La La Land'), TRUE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Jesse Eisenberg'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Andrew Garfield'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Roberto Benigni'), (SELECT id_contenido FROM Contenido WHERE nombre='La vida es bella'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Nicoletta Braschi'), (SELECT id_contenido FROM Contenido WHERE nombre='La vida es bella'), FALSE, TRUE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Leonardo DiCaprio'), (SELECT id_contenido FROM Contenido WHERE nombre='El gran Gatsby'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Carey Mulligan'), (SELECT id_contenido FROM Contenido WHERE nombre='El gran Gatsby'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Uma Thurman'), (SELECT id_contenido FROM Contenido WHERE nombre='Kill Bill: Volumen 1'), FALSE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Lucy Liu'), (SELECT id_contenido FROM Contenido WHERE nombre='Kill Bill: Volumen 1'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Joaquin Phoenix'), (SELECT id_contenido FROM Contenido WHERE nombre='Joker'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Robert De Niro'), (SELECT id_contenido FROM Contenido WHERE nombre='Joker'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Matthew McConaughey'), (SELECT id_contenido FROM Contenido WHERE nombre='Interestelar'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Anne Hathaway'), (SELECT id_contenido FROM Contenido WHERE nombre='Interestelar'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Harrison Ford'), (SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Karen Allen'), (SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida'), FALSE, FALSE),
+
+	((SELECT id_actor FROM Actor WHERE nombre='Sacha Baron Cohen'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'), TRUE, TRUE),
+	((SELECT id_actor FROM Actor WHERE nombre='Anna Faris'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'), FALSE, FALSE),
+
+
+	;
 
 --Tiene
 INSERT INTO Tiene
 	(id_genero, id_contenido) Values
-	((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
-	((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada')),
-	((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social')),
-	((SELECT id_genero FROM Genero WHERE nombre='Comedia'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump')),
-	((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista')),
-	((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista')),
-	((SELECT id_genero FROM Genero WHERE nombre='Terror'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburon'));
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Hustle')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio')),
+		((SELECT id_genero FROM Genero WHERE nombre='Crimen'), (SELECT id_contenido FROM Contenido WHERE nombre='El Irlandés')),
+		((SELECT id_genero FROM Genero WHERE nombre('Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El club de la pelea')),
+		((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='El Hoyo')),
+		((SELECT id_genero FROM Genero WHERE nombre='Crimen'), (SELECT id_contenido FROM Contenido WHERE nombre='Goodfellas')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El Rey')),
+		((SELECT id_genero FROM Genero WHERE nombre='Ciencia ficción'), (SELECT id_contenido FROM Contenido WHERE nombre='Terminator 2: El juicio final')),
+		((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='Parásitos')),
+		((SELECT id_genero FROM Genero WHERE nombre='Terror'), (SELECT id_contenido FROM Contenido WHERE nombre='Tiburón')),
+		((SELECT id_genero FROM Genero WHERE nombre='Fantástico'), (SELECT id_contenido FROM Contenido WHERE nombre='Parque Jurásico')),
+		((SELECT id_genero FROM Genero WHERE nombre='Crimen'), (SELECT id_contenido FROM Contenido WHERE nombre='Caracortada')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Atrápame si puedes')),
+		((SELECT id_genero FROM Genero WHERE nombre='Romance'), (SELECT id_contenido FROM Contenido WHERE nombre='Call Me By Your Name')),
+		((SELECT id_genero FROM Genero WHERE nombre='Guerra'), (SELECT id_contenido FROM Contenido WHERE nombre='El pianista ')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Forrest Gump')),
+		((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Gladiador')),
+		((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='La isla siniestra')),
+		((SELECT id_genero FROM Genero WHERE nombre='Guerra'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
+		((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen')),
+		((SELECT id_genero FROM Genero WHERE nombre='Biografía'), (SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo')),
+		((SELECT id_genero FROM Genero WHERE nombre='Músical'), (SELECT id_contenido FROM Contenido WHERE nombre='La la land')),
+		((SELECT id_genero FROM Genero WHERE nombre='Biografía'), (SELECT id_contenido FROM Contenido WHERE nombre='La red social')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La vida es bella')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='El gran Gatsby')),
+		((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Kill Bill: Volumen 1')),
+		((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Joker')),
+		((SELECT id_genero FROM Genero WHERE nombre='Ciencia ficción'), (SELECT id_contenido FROM Contenido WHERE nombre='Interestelar')),
+		((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida')),
+		((SELECT id_genero FROM Genero WHERE nombre='Comedia'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador')),
+
+	;
 
 -- Extra en visualizacion para garantizar que Adrian haya visto los shows que requieren suscripcion
 INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
