@@ -1354,6 +1354,7 @@ INSERT INTO Episodio
     ((SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai'), (SELECT T.id_temporada FROM Contenido C, Temporada T WHERE C.id_contenido=T.id_contenido AND C.nombre='Cobra Kai' AND T.numero=6), 10, 'Eunjangdo', 'Daniel y Johnny entrenan a sus capitanes en lugares históricos de Barcelona. Pero un golpe bajo en las semifinales desata una pelea sin precedentes.')
 ;
 
+
 --Pelicula
 INSERT INTO Pelicula 
     (id_contenido, mins_duracion, ganadora_premios, sinopsis) VALUES
@@ -1398,6 +1399,7 @@ FROM Contenido C, Perfil P
 ORDER BY RANDOM()
 LIMIT 200;
 
+
 --Requiere
 INSERT INTO Requiere
 SELECT C.id_contenido, S.id_suscripcion
@@ -1406,6 +1408,7 @@ WHERE C.id_contenido NOT IN (SELECT id_contenido FROM Requiere)
 ORDER BY RANDOM()
 LIMIT 5
 ON CONFLICT (id_contenido, id_suscripcion) DO NOTHING;
+
 
 -- Visualizacion
 INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
@@ -1435,6 +1438,15 @@ ORDER BY RANDOM()
 LIMIT 10
 ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
 
+-- Extra en visualizacion para garantizar que Adrian haya visto los shows que requieren suscripcion
+INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
+SELECT C.id_contenido, P.id_usuario, P.id_perfil, 4
+FROM Contenido C, Perfil P, Requiere R
+WHERE R.id_contenido = C.id_contenido
+AND P.id_usuario = (SELECT id_usuario FROM Perfil WHERE email = 'erenihan5@bandcamp.com')
+LIMIT 2
+ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
+
 
 --Genero
 INSERT INTO Genero
@@ -1462,6 +1474,7 @@ FROM Perfil P, Genero G
 ORDER BY RANDOM()
 LIMIT 120
 ON CONFLICT (id_usuario, id_perfil, id_genero) DO NOTHING;
+
 
 --Actor
 INSERT INTO Actor
@@ -1543,6 +1556,7 @@ INSERT INTO Actor
     ('William Zabka', 'M', '1985'),
     ('Zoe Saldana', 'F', '2000')
 	;
+
 
 --Actua
 INSERT INTO Actua
@@ -1673,6 +1687,7 @@ INSERT INTO Actua
 	((SELECT id_actor FROM Actor WHERE nombre='Anna Faris'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'), FALSE, FALSE)
 ;
 
+
 --Tiene
 INSERT INTO Tiene
 	(id_genero, id_contenido) VALUES
@@ -1708,12 +1723,3 @@ INSERT INTO Tiene
     ((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida')),
     ((SELECT id_genero FROM Genero WHERE nombre='Comedia'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'))
 ;
-
--- Extra en visualizacion para garantizar que Adrian haya visto los shows que requieren suscripcion
-INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
-SELECT C.id_contenido, P.id_usuario, P.id_perfil, 4
-FROM Contenido C, Perfil P, Requiere R
-WHERE R.id_contenido = C.id_contenido
-AND P.id_usuario = (SELECT id_usuario FROM Perfil WHERE email = 'erenihan5@bandcamp.com')
-LIMIT 2
-ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;

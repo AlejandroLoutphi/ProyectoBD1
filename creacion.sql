@@ -54,23 +54,6 @@ CREATE TABLE Perfil(
     PRIMARY KEY (id_usuario, id_perfil)
 );
 
-CREATE OR REPLACE FUNCTION inc_perfil_id_fn()
-RETURNS TRIGGER
-LANGUAGE PLPGSQL
-AS $$
-BEGIN
-    IF ((SELECT count(*) FROM Perfil P WHERE P.id_usuario = NEW.id_usuario) >= 5) THEN
-        RAISE EXCEPTION 'Solo pueden haber hasta 5 perfiles por usuario';
-    END IF;
-    RETURN NEW;
-END;
-$$;
-
-CREATE TRIGGER inc_perfil_id
-BEFORE INSERT ON Perfil
-FOR EACH ROW
-EXECUTE PROCEDURE inc_perfil_id_fn();
-
 CREATE TABLE Genero(
     id_genero SERIAL PRIMARY KEY,
     nombre VARCHAR(128) NOT NULL,
@@ -239,3 +222,57 @@ CREATE TABLE Tiene(
         ON DELETE CASCADE,
     PRIMARY KEY (id_genero, id_contenido)
 );
+
+-- trigger para limitar los perfiles por usuario a 5
+CREATE OR REPLACE FUNCTION inc_perfil_id_fn()
+RETURNS TRIGGER
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    IF ((SELECT count(*) FROM Perfil P WHERE P.id_usuario = NEW.id_usuario) >= 5) THEN
+        RAISE EXCEPTION 'Solo pueden haber hasta 5 perfiles por usuario.';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER inc_perfil_id
+BEFORE INSERT ON Perfil
+FOR EACH ROW
+EXECUTE PROCEDURE inc_perfil_id_fn();
+
+-- trigger para que no aparezca una pelicula en serie
+CREATE OR REPLACE FUNCTION no_peli_en_serie_fn()
+RETURNS TRIGGER
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    IF ((SELECT count(*) FROM Serie WHERE id_contenido = NEW.id_contenido) > 0) THEN
+        RAISE EXCEPTION 'Un contenido puede ser serie o pelicula. No ambos.';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER no_peli_en_serie
+BEFORE INSERT ON Pelicula
+FOR EACH ROW
+EXECUTE PROCEDURE no_peli_en_serie_fn();
+
+-- trigger para que no aparezca una serie en pelicula
+CREATE OR REPLACE FUNCTION no_serie_en_peli_fn()
+RETURNS TRIGGER
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    IF ((SELECT count(*) FROM Pelicula WHERE id_contenido = NEW.id_contenido) > 0) THEN
+        RAISE EXCEPTION 'Un contenido puede ser serie o pelicula. No ambos.';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER no_serie_en_peli
+BEFORE INSERT ON Serie
+FOR EACH ROW
+EXECUTE PROCEDURE no_serie_en_peli_fn();
