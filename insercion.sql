@@ -1555,7 +1555,7 @@ INSERT INTO Actor
     ('Uma Thurman', 'F', '1980'),
     ('William Zabka', 'M', '1985'),
     ('Zoe Saldana', 'F', '2000')
-	;
+;
 
 
 --Actua
@@ -1700,7 +1700,7 @@ INSERT INTO Tiene
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad')),
-    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Hustle')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio')),
