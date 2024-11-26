@@ -6,6 +6,8 @@ CREATE TYPE Tipo AS ENUM
     ('Gold', 'Premium', 'VIP');
 
 CREATE DOMAIN Calificacion AS INT CHECK (VALUE BETWEEN 1 AND 5);
+
+-- tipos enteros no negativos (Unsigned int)
 CREATE DOMAIN Uint AS INT CHECK (VALUE >= 0);
 CREATE DOMAIN BigUint AS BIGINT CHECK (VALUE >= 0);
 

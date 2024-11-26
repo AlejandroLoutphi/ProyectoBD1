@@ -1691,6 +1691,16 @@ INSERT INTO Actua
 --Tiene
 INSERT INTO Tiene
 	(id_genero, id_contenido) VALUES
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Breaking Bad')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Ciencia ficción'), (SELECT id_contenido FROM Contenido WHERE nombre='Lost')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Arcane')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Desde Cero')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Flash')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='The Resident')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='The Blacklist')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Yellowstone')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Falsa Identidad')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Cobra Kai')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='La sociedad de la nieve')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Hustle')),
     ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Historia de un matrimonio')),
@@ -1711,6 +1721,7 @@ INSERT INTO Tiene
     ((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Gladiador')),
     ((SELECT id_genero FROM Genero WHERE nombre='Suspenso'), (SELECT id_contenido FROM Contenido WHERE nombre='La isla siniestra')),
     ((SELECT id_genero FROM Genero WHERE nombre='Guerra'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
+    ((SELECT id_genero FROM Genero WHERE nombre='Drama'), (SELECT id_contenido FROM Contenido WHERE nombre='Bastardos sin gloria')),
     ((SELECT id_genero FROM Genero WHERE nombre='Acción'), (SELECT id_contenido FROM Contenido WHERE nombre='Baby: El aprendiz del crimen')),
     ((SELECT id_genero FROM Genero WHERE nombre='Biografía'), (SELECT id_contenido FROM Contenido WHERE nombre='La teoría del todo')),
     ((SELECT id_genero FROM Genero WHERE nombre='Musical'), (SELECT id_contenido FROM Contenido WHERE nombre='La la land')),
