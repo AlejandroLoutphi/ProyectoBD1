@@ -1,4 +1,3 @@
--- No tenemos ninguna pelicula de drama que dure más de 2 horas y media
 SELECT C.nombre, P.sinopsis, C.annio_lanzamiento
 FROM Pelicula AS P JOIN Contenido AS C
 ON P.id_contenido = C.id_contenido
