@@ -1413,6 +1413,15 @@ SELECT C.id_contenido, P.id_usuario, P.id_perfil, S
 FROM Contenido C, Perfil P, generate_series(1, 5) S
 WHERE C.id_contenido NOT IN (SELECT id_contenido FROM Requiere)
 ORDER BY RANDOM()
+LIMIT 300
+ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
+
+-- Visualizaciones con 5 estrellas para tener data más realista
+INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
+SELECT C.id_contenido, P.id_usuario, P.id_perfil, 5
+FROM Contenido C, Perfil P
+WHERE C.id_contenido NOT IN (SELECT id_contenido FROM Requiere)
+ORDER BY RANDOM()
 LIMIT 200
 ON CONFLICT (id_contenido, id_usuario, id_perfil) DO NOTHING;
 
@@ -1698,7 +1707,7 @@ INSERT INTO Tiene
     ((SELECT id_genero FROM Genero WHERE nombre='Ciencia ficción'), (SELECT id_contenido FROM Contenido WHERE nombre='Interestelar')),
     ((SELECT id_genero FROM Genero WHERE nombre='Aventura'), (SELECT id_contenido FROM Contenido WHERE nombre='Indiana Jones y el arca perdida')),
     ((SELECT id_genero FROM Genero WHERE nombre='Comedia'), (SELECT id_contenido FROM Contenido WHERE nombre='El Dictador'))
-	;
+;
 
 -- Extra en visualizacion para garantizar que Adrian haya visto los shows que requieren suscripcion
 INSERT INTO Visualizacion (id_contenido, id_usuario, id_perfil, calificacion)
